@@ -1,0 +1,114 @@
+{
+  "links": [
+    {
+      "Título": "Manual do Programa",
+      "Texto": "Clique para ler",
+      "Link": "https://google.com"
+    }
+  ],
+  "gaiolas_global": [],
+  "bib_est": {
+    "EST-PADRAO": [
+      {
+        "SIGLA": "GLOBAL",
+        "Modelo_Chave": "EST-PADRAO",
+        "Marca": "MARCA X",
+        "Item": "Sensor Óptico",
+        "Código do Item": "SKU-001",
+        "Referência": "Ref 101",
+        "Tamanho": "P",
+        "Crítico": "SIM"
+      },
+      {
+        "SIGLA": "GLOBAL",
+        "Modelo_Chave": "EST-PADRAO",
+        "Marca": "MARCA Y",
+        "Item": "Rolete 400mm",
+        "Código do Item": "SKU-002",
+        "Referência": "Ref 202",
+        "Tamanho": "M",
+        "Crítico": "NÃO"
+      },
+      {
+        "SIGLA": "GLOBAL",
+        "Modelo_Chave": "EST-PADRAO",
+        "Marca": "MARCA Z",
+        "Item": "Correia de Transmissão",
+        "Código do Item": "SKU-003",
+        "Referência": "Ref 303",
+        "Tamanho": "G",
+        "Crítico": "SIM"
+      },
+      {
+        "SIGLA": "RS01",
+        "Modelo_Chave": "EST-PADRAO",
+        "Marca": "ESPECIAL",
+        "Item": "Sensor Laser Upgrade",
+        "Código do Item": "SKU-SPEC",
+        "Referência": "Ref Laser",
+        "Tamanho": "P",
+        "Crítico": "SIM"
+      }
+    ]
+  },
+  "bib_pai": {},
+  "unidades": [
+    {
+      "Sigla": "RS01",
+      "Unidade": "Porto Alegre",
+      "Regional": "SUL",
+      "Analista": "Analista A",
+      "Supervisor": "Sup A",
+      "Endereco": "Rua A, 100",
+      "esteiras": [
+        {
+          "SIGLA": "RS01",
+          "TAG": "EST-01",
+          "Modelo_Chave": "EST-PADRAO",
+          "Qtd_Modulos": 4
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [],
+      "estoque": []
+    },
+    {
+      "Sigla": "PR02",
+      "Unidade": "Curitiba",
+      "Regional": "SUL",
+      "Analista": "Analista B",
+      "Supervisor": "Sup B",
+      "Endereco": "Rua B, 200",
+      "esteiras": [
+        {
+          "SIGLA": "PR02",
+          "TAG": "EST-99",
+          "Modelo_Chave": "EST-PADRAO",
+          "Qtd_Modulos": 6
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [],
+      "estoque": []
+    },
+    {
+      "Sigla": "SC03",
+      "Unidade": "Florianópolis",
+      "Regional": "SUL",
+      "Analista": "Analista C",
+      "Supervisor": "Sup C",
+      "Endereco": "Rua C, 300",
+      "esteiras": [
+        {
+          "SIGLA": "SC03",
+          "TAG": "EST-FLN",
+          "Modelo_Chave": "EST-PADRAO",
+          "Qtd_Modulos": 2
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [],
+      "estoque": []
+    }
+  ]
+}

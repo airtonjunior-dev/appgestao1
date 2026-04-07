@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+ENV/
+
+# Excel Temp Files
+~$*
+.DS_Store
+
+# Data
+# dados.json # Talvez queira manter na migração

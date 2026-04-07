@@ -1,0 +1,1356 @@
+{
+  "links": [
+    {
+      "Título": "Controle de Gaiolas",
+      "Texto": "Link para controle de gaiolas",
+      "Link": "https://docs.google.com/forms/d/e/1FAIpQLSfhTmAwuqlwE-VjpjaQb1xaOsDGT0OUJRpTS3jwmPyk9dd88w/viewform?usp=dialog"
+    },
+    {
+      "Título": "Respostas Gaiolas",
+      "Texto": "Link para leitura controle de gaiolas",
+      "Link": "https://docs.google.com/spreadsheets/d/1XhBbd_bJpJUY2_QaJdRcyq2C8byZy_xzSuqQis7e1WI/edit?usp=sharing"
+    }
+  ],
+  "gaiolas_global": [
+    {
+      "Carimbo de data/hora": "24/02/2026 17:52",
+      "Qual seu nome": "Airton",
+      "Seu CPF sem pontos ou traços": 3171126001,
+      "SIGLA": "SPR1",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 10
+    }
+  ],
+  "bib_est": {
+    "ESTEIRA INSTALL PADRAO": [],
+    "NUCLEOTECH_STD": [],
+    "INSTALL-IJUI": [
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Lona Modulo 1",
+        "Codigo": "xxxx",
+        "Referencia": "lona PVC",
+        "Tamanho": "L:1160MM COMP:25545MM FECHADA",
+        "Critico": "Sim"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Lona Modulo 2",
+        "Codigo": "xxxx",
+        "Referencia": "lona PVC",
+        "Tamanho": "L:1160MM COMP:25545MM FECHADA",
+        "Critico": "Sim"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Lona Modulo 3",
+        "Codigo": "xxxx",
+        "Referencia": "lona PVC",
+        "Tamanho": "L:1160MM COMP:25545MM FECHADA",
+        "Critico": "Sim"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Lona Modulo 4",
+        "Codigo": "xxxx",
+        "Referencia": "lona PVC",
+        "Tamanho": "L:1160MM COMP:25545MM FECHADA",
+        "Critico": "Sim"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Eixo Movido",
+        "Codigo": 30703,
+        "Referencia": "S/I",
+        "Tamanho": "dimensões: Ø70 x 1185,6mm",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "ANEL ELASTICO PARA FURO 47X1,75MM - DIN 472 - ACO CARBONO",
+        "Codigo": 10197,
+        "Referencia": "Eixo movido",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "ANEL ELASTICO PARA EIXO 20 X 1,2MM - DIN 471 - ACO CARBONO",
+        "Codigo": "S/I",
+        "Referencia": "Eixo movido",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "NSK",
+        "Item": "ROLAMENTO DE ESFERA 6204 DDU CN - ACO CARBONO",
+        "Codigo": 16545,
+        "Referencia": "Eixo movido",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "TUBO ROLE CONICO",
+        "Codigo": 24526,
+        "Referencia": "Eixo movido",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "EIXO ROLE CILI",
+        "Codigo": 17896,
+        "Referencia": "Eixo movido",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "SEW",
+        "Item": "MOTOREDUTOR",
+        "Codigo": 16906,
+        "Referencia": "SA57/TDRN100LM4 - 2,2KW - 124RPM - 153NM - M1A/B - EIXO OCO Ø30MM - CAIXA 90/3 - 220/380/440 V - 60HZ",
+        "Tamanho": "EIXO OCO Ø30MM",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "YONGLIBELT",
+        "Item": "ESTEIRA LONA",
+        "Codigo": 31108,
+        "Referencia": "H25-34/0A PRETA 2MM",
+        "Tamanho": "L:1160MM COMP:25545MM FECHADA",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "FRM",
+        "Item": "MANCAL FL208",
+        "Codigo": 20627,
+        "Referencia": "Mancal",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "MANCAL FL208 (GYE 40) DOIS FUROS FERRO FUNDIDO - FRM",
+        "Codigo": 19700,
+        "Referencia": "Mancal",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "SKF",
+        "Item": "ROLAMENTO UC 208 (GYE 40) - ACO CARBONO",
+        "Codigo": 5990,
+        "Referencia": "Mancal",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "PINO GRAXEIRO RETO M6 - GALVANIZADO",
+        "Codigo": "S/I",
+        "Referencia": "Mancal",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Eixo de reto",
+        "Codigo": 30702,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "dimensões: Ø70 x 1185,6mm",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "ANEL ELASTICO PARA FURO 47X1,75MM - DIN 472 - ACO CARBONO",
+        "Codigo": 10197,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "ANEL ELASTICO PARA EIXO 20 X 1,2MM - DIN 471 - ACO CARBONO",
+        "Codigo": 9723,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "ROLE CILI",
+        "Codigo": 24536,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "NSK",
+        "Item": "ROLAMENTO DE ESFERA 6204 DDU CN - ACO CARBONO",
+        "Codigo": 16545,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "EIXO ROLE CILI",
+        "Codigo": 17896,
+        "Referencia": "Eixo de reto",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Rolete de retorno",
+        "Codigo": 19233,
+        "Referencia": "Rolete de retorno",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "NSK",
+        "Item": "ROLAMENTO DE ESFERA 6201 DDU CN - ACO CARBONO",
+        "Codigo": 16472,
+        "Referencia": "Rolete de retorno",
+        "Tamanho": "S/I",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "TUBO FABRICAÇÃO INSTALL ",
+        "Codigo": 19231,
+        "Referencia": "Rolete de retorno",
+        "Tamanho": "(dimensões: Ø50,8 x 1195mm)",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "EIXO FABRICAÇÃO INSTALL ",
+        "Codigo": 19232,
+        "Referencia": "Rolete de retorno",
+        "Tamanho": "(dimensões: Ø12 x 1195mm)",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "Install",
+        "Item": "Eixo de tração",
+        "Codigo": 32791,
+        "Referencia": "Eixo de tração",
+        "Tamanho": "dimensões: Ø111,6 x 1473,6mm",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "Chapa de transferência",
+        "Codigo": 24658,
+        "Referencia": "Chapa de transferência",
+        "Tamanho": "dimensões: 50 x 102 x 1194mm",
+        "Critico": "S/I"
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Chave": "INSTALL-IJUI",
+        "Marca": "na",
+        "Item": "Trilho flow rack",
+        "Codigo": 18385,
+        "Referencia": "Flow Rack",
+        "Tamanho": "dimensões: 35 x 41 x 1980mm",
+        "Critico": "S/I"
+      }
+    ]
+  },
+  "bib_pai": {
+    "PCR_EST_01 IJUI": [
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Inversor de Frequência CFW 300 ANTERIOR (TROCADO POR QUEIMA)",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.CFW300B15P2T2DB20",
+        "Funcao": "Controle de velocidade da esteira "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Inversor de Frequência Atual CFW500",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.CFW500D28P0T2DB0G2",
+        "Funcao": "Controle de velocidade da esteira "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Relé de Segurança",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG CP-D 301",
+        "Funcao": "Monitoramento de emergência e segurança "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Disjuntor-Motor (10-16A)",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.MPW40-3-U016",
+        "Funcao": "Proteção do motor principal / Inversor "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Disjuntor-Motor (2,5-4A)",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.MPW40-3-U004",
+        "Funcao": "Proteção individual dos motores das esteiras "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Contator de Potência",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.CWB9-11-30D23",
+        "Funcao": "Acionamento de carga (Motores/Inversor) "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Fonte de Alimentação",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.PSS24-W2/2",
+        "Funcao": "Conversão 220Vca para 24Vcc (Comando) "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Mini-Contator Auxiliar",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.CWCA0-40-00D24",
+        "Funcao": "Lógica de intertravamento e comando "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Relé de Interface",
+        "Fabricante": "PHOENIX",
+        "Codigo_Fabricante": 2966171,
+        "Funcao": "Acoplamento de sinais entre dispositivos "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Botão de Emergência",
+        "Fabricante": "WEG",
+        "Codigo_Fabricante": "WEG.CSW-BESP WH",
+        "Funcao": "Parada de emergência (Trava Puxa/Solta) "
+      },
+      {
+        "SIGLA": "SRS7",
+        "Modelo_Painel": "PCR_EST_01 IJUI",
+        "Item": "Microventilador",
+        "Fabricante": "MAV",
+        "Codigo_Fabricante": "MAV.13151",
+        "Funcao": "Sistema de exaustão e troca de calor "
+      }
+    ]
+  },
+  "unidades": [
+    {
+      "Sigla": "SPR1",
+      "Unidade": "Curitiba",
+      "Regional": "RSSC",
+      "Analista": "Daniel",
+      "Supervisor": "Jonas",
+      "Endereco": "Rodovia Federal BR 277, KM 584, Lote 391-C-13A, Cascavel/PR - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SPR1",
+          "TAG": "ESTEIRA 11",
+          "Modelo_Chave": "ESTEIRA INSTALL PADRAO",
+          "Qtd_Modulos": 4
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR1",
+          "Nome": "JOSE ALBERTO TOVAR QUINTANA",
+          "CPF": 11081907231,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 330947,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 4
+        }
+      ]
+    },
+    {
+      "Sigla": "SSC4",
+      "Unidade": "Chapecó",
+      "Regional": "RSSC",
+      "Analista": "Daniel",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-158 - Vila Esperança, São Bráz - Pato Branco/PR\nCondomínio Carba Logística Galpão 1, CEP: 85503-301 - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SSC4",
+          "TAG": "EST-01",
+          "Modelo_Chave": "NUCLEOTECH_STD",
+          "Qtd_Modulos": 12
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC4",
+          "Nome": "CARLOS EDUARDO MACHADO",
+          "CPF": 82504253087,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC4",
+          "Nome": "MARCOS FERNANDO HAMES",
+          "CPF": 4146718996,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 333307,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 2
+        }
+      ]
+    },
+    {
+      "Sigla": "SPR2",
+      "Unidade": "Londrina",
+      "Regional": "PRSC",
+      "Analista": "Mayara",
+      "Supervisor": "Jonas",
+      "Endereco": " Avenida Tiradentes, N° 7100, Bairro: Jardim Rosicler, Londrina - PR,  - CEP: 86.072-000",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR2",
+          "Nome": "JOAO CESAR DE OLIVEIRA FERREIRA",
+          "CPF": 7363755973,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR2",
+          "Nome": "RAFAEL DA SILVEIRA FUNGARI",
+          "CPF": 9726058945,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS9",
+      "Unidade": "Nova Santa Rita",
+      "Regional": "RSSC",
+      "Analista": "Fabo",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-277, KM348 - Jardim das Americas, Guarapuava/PR, CEP: 85030-230 - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SRS9",
+          "TAG": "EST-01",
+          "Modelo_Chave": "NUCLEOTECH_STD",
+          "Qtd_Modulos": 18
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS9",
+          "Nome": "ELISANDRO DA SILVA",
+          "CPF": 1389082067,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "FERNANDO LUIS CAMPOS SARMENTO",
+          "CPF": 59326085015,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "LUCAS KLIPPEL BOERO",
+          "CPF": 4025797046,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "ROBSON FERNANDES DA SILVEIRA",
+          "CPF": 832021024,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 333307,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 0
+        }
+      ]
+    },
+    {
+      "Sigla": "SPR6",
+      "Unidade": "Maringa",
+      "Regional": "PRSC",
+      "Analista": "Mayara",
+      "Supervisor": "Jonas",
+      "Endereco": "CD Mercado Livre - BR 376 - Nº 13595 GL Ribeirão, Av. Colombo, Maringá - PR, 87070-610",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR6",
+          "Nome": "MURILLO RODRIGUES GOZER",
+          "CPF": 5095318903,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR6",
+          "Nome": "NICOLAS LYON CUNHA SILVA",
+          "CPF": 48276881840,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SPR7",
+      "Unidade": "Ponta Grossa",
+      "Regional": "PRSC",
+      "Analista": "Mayara",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-376, 36000 - Colonia Dona Luiza, Ponta Grossa - PR, CEP: 84043-450 - Condomínio Industrial e Logístico Interalli Realty - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR7",
+          "Nome": "FELIPE BITTENCOURT DE LIMA",
+          "CPF": 8281213973,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SPR1",
+      "Unidade": "Curitiba",
+      "Regional": "PRSC",
+      "Analista": "Wilson",
+      "Supervisor": "Jonas",
+      "Endereco": "Rua São Bento, 2143, Vila Hauer, Curitiba/PR - CEP 81630-230 - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SPR1",
+          "TAG": "ESTEIRA 11",
+          "Modelo_Chave": "ESTEIRA INSTALL PADRAO",
+          "Qtd_Modulos": 4
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR1",
+          "Nome": "JOSE ALBERTO TOVAR QUINTANA",
+          "CPF": 11081907231,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 330947,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 4
+        }
+      ]
+    },
+    {
+      "Sigla": "SPR8",
+      "Unidade": "Campina Grande do Sul",
+      "Regional": "PRSC",
+      "Analista": "Wilson",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-116, 1500, Campina Grande do Sul - PR, 83430-000 - Mega Centro Logistico  - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR8",
+          "Nome": "ADRIANO DE CASTRO",
+          "CPF": 5637706948,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR8",
+          "Nome": "DANIEL BORBA DE PIERI",
+          "CPF": 4774856932,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR8",
+          "Nome": "MAXIMILIANO DE ARAUJO BOAVENTURA",
+          "CPF": 4633700901,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS5",
+      "Unidade": "Passo Fundo (após moving)",
+      "Regional": "RSSC",
+      "Analista": "Fernando",
+      "Supervisor": "John",
+      "Endereco": "Rua Alôncio de Camargo, 1000 - Integração, Passo Fundo/RS, CEP: 99032-040 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS5",
+          "Nome": "CARLOS RENATO DE SOUZA",
+          "CPF": 1195690002,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS5",
+          "Nome": "JEFERSON EURIDES HORTENCIO",
+          "CPF": 44131747049,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS8",
+      "Unidade": "Sapucaia do Sul",
+      "Regional": "RSSC",
+      "Analista": "Fabio",
+      "Supervisor": "John",
+      "Endereco": "Av. Borges de Medeiros, 1771 - Colonial, Sapucaia do Sul - RS, 93212-110 - Ecoparque Lourenço E Souza - BLOCO D - Acesso 2",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS8",
+          "Nome": "DOUGLAS MENDES DIAS",
+          "CPF": 2700295080,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS8",
+          "Nome": "MIKAEL BICCA LISBOA",
+          "CPF": 1659706009,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS8",
+          "Nome": "NARCISO CRISTIANO MENDES DIAS",
+          "CPF": 2009945069,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "RS01",
+      "Unidade": "METRO FULL Sapucaia do Sul",
+      "Regional": "RSSC",
+      "Analista": "Fabio",
+      "Supervisor": "John",
+      "Endereco": "Av. Borges de Medeiros, 1771 - Colonial, Sapucaia do Sul - RS, 93212-110 - Ecoparque Lourenço E Souza - BLOCO F - Portão Acesso 6",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "RS01",
+          "Nome": "WAGNER HENRIQUE ROVEDA MACEDO",
+          "CPF": 83437703072,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS2",
+      "Unidade": "Pelotas",
+      "Regional": "RSSC",
+      "Analista": "Ferando",
+      "Supervisor": "John",
+      "Endereco": "Avenida Presidente João Belchior Marques Goulart, 8.831  CEP: 96050-500 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS2",
+          "Nome": "HENRIQUE XAVIER DA COSTA",
+          "CPF": 4235815032,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS3",
+      "Unidade": "Santa Maria (após moving)",
+      "Regional": "RSSC",
+      "Analista": "Fenando",
+      "Supervisor": "John",
+      "Endereco": "ROD. RST 287, KM 240, Nº 3250 Faixa Nova Camobi - Santa Maria/RS, CEP: 97105-185 Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS3",
+          "Nome": "CRISTIANO FLORES CARDOSO",
+          "CPF": 3251664042,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS7",
+      "Unidade": "Ijuí",
+      "Regional": "RSSC",
+      "Analista": "Fernando",
+      "Supervisor": "John",
+      "Endereco": "RS-522 n° 280 - Rua Augusto Pestana, Ijuí/RS, CEP: 98700-000 - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SRS7",
+          "TAG": "ESTEIRA DE IJUI",
+          "Modelo_Chave": "INSTALL-IJUI",
+          "Qtd_Modulos": 4
+        }
+      ],
+      "paineis_unid": [
+        {
+          "SIGLA": "SRS7",
+          "TAG_Painel": "Painel de comando Esteira de IJUI",
+          "Modelo_Painel": "PCR_EST_01 IJUI",
+          "Localizacao": "OPERAÇÃO"
+        }
+      ],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS7",
+          "Nome": "HELITON SILVA DE CASTRO",
+          "CPF": 4016272920,
+          "Telefone": 41988805047.0,
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "Lona PVC Fechada",
+          "Codigo_Item": "lona pvc xxx",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 2.0,
+          "Observacao": "URGENTE"
+        },
+        {
+          "Componente": "Inversor de Frequência CFW 300 ANTERIOR (TROCADO POR QUEIMA)",
+          "Codigo_Item": "WEG.CFW300B15P2T2DB20",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Inversor de Frequência Atual CFW500",
+          "Codigo_Item": "WEG.CFW500D28P0T2DB0G2",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Relé de Segurança",
+          "Codigo_Item": "WEG CP-D 301",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Disjuntor-Motor (10-16A)",
+          "Codigo_Item": "WEG.MPW40-3-U016",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Disjuntor-Motor (2,5-4A)",
+          "Codigo_Item": "WEG.MPW40-3-U004",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Contator de Potência",
+          "Codigo_Item": "WEG.CWB9-11-30D23",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Fonte de Alimentação",
+          "Codigo_Item": "WEG.PSS24-W2/2",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Mini-Contator Auxiliar",
+          "Codigo_Item": "WEG.CWCA0-40-00D24",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Relé de Interface",
+          "Codigo_Item": 2966171,
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Botão de Emergência",
+          "Codigo_Item": "WEG.CSW-BESP WH",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        },
+        {
+          "Componente": "Microventilador",
+          "Codigo_Item": "MAV.13151",
+          "Estoque_Real": 0.0,
+          "Estoque_Obrigatorio": 1.0,
+          "Observacao": "S/I"
+        }
+      ]
+    },
+    {
+      "Sigla": "SRS10",
+      "Unidade": "Estrela (Lajeado)",
+      "Regional": "RSSC",
+      "Analista": "Fernando",
+      "Supervisor": "John",
+      "Endereco": "Endereço: BR 386, KM 356, Servidão de Passagem, nº 425 Santa Rita - Estrela/RS, CEP: 95880-000 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS10",
+          "Nome": "LEONARDO DE SOUZA TEIXEIRA",
+          "CPF": 3834386081,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS1",
+      "Unidade": "Porto Alegre",
+      "Regional": "RSSC",
+      "Analista": "Flavio",
+      "Supervisor": "John",
+      "Endereco": "Rua da Várzea, 481, Jardim São Pedro, CEP: 91040-600, Porto Alegre/RS - Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SRS1",
+          "TAG": "EST-01",
+          "Modelo_Chave": "NUCLEOTECH_STD",
+          "Qtd_Modulos": 20
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS1",
+          "Nome": "CASSIANO DA SILVA",
+          "CPF": 60075673037,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS1",
+          "Nome": "CRISTIANO ALVES SOARES",
+          "CPF": 2098815000,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS1",
+          "Nome": "MOISES BELLOLI LEEPKALN",
+          "CPF": 141846054,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 333307,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 3
+        }
+      ]
+    },
+    {
+      "Sigla": "SRS4",
+      "Unidade": "Caxias Novo\nFlores da Cunha (apos moving)",
+      "Regional": "RSSC",
+      "Analista": "Flavio",
+      "Supervisor": "John",
+      "Endereco": "Estrada das Indústrias, 2030 - Lagoa Bella, Flores de Cunha - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS4",
+          "Nome": "MAICON RODRIGO BETTANZOS  LOPES",
+          "CPF": 934935092,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS4",
+          "Nome": "SAMUEL VINICIUS KULMANN BACCHI",
+          "CPF": 992556007,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "BRA01",
+      "Unidade": "MELIAR Porto Alegre",
+      "Regional": "RSSC",
+      "Analista": "Flavio",
+      "Supervisor": "John",
+      "Endereco": "Av dos Estados, 30 PORTÃO 1",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [],
+      "estoque": []
+    },
+    {
+      "Sigla": "SRS9",
+      "Unidade": "Rita",
+      "Regional": "RSSC",
+      "Analista": "Fabio",
+      "Supervisor": "John",
+      "Endereco": "Rua Amilton da Silva Amorim 86 Nova Santa Rita / RS",
+      "esteiras": [
+        {
+          "SIGLA": "SRS9",
+          "TAG": "EST-01",
+          "Modelo_Chave": "NUCLEOTECH_STD",
+          "Qtd_Modulos": 18
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SRS9",
+          "Nome": "ELISANDRO DA SILVA",
+          "CPF": 1389082067,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "FERNANDO LUIS CAMPOS SARMENTO",
+          "CPF": 59326085015,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "LUCAS KLIPPEL BOERO",
+          "CPF": 4025797046,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SRS9",
+          "Nome": "ROBSON FERNANDES DA SILVEIRA",
+          "CPF": 832021024,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 333307,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 0
+        }
+      ]
+    },
+    {
+      "Sigla": "SSC4",
+      "Unidade": "Chapecó",
+      "Regional": "RSSC",
+      "Analista": "Daniel",
+      "Supervisor": "Felipe",
+      "Endereco": "Logradouro: Rodovia 283, SN, Galpao 01 Bairro: Rural - CEP: 89815-899 - Chapecó SC Maps",
+      "esteiras": [
+        {
+          "SIGLA": "SSC4",
+          "TAG": "EST-01",
+          "Modelo_Chave": "NUCLEOTECH_STD",
+          "Qtd_Modulos": 12
+        }
+      ],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC4",
+          "Nome": "CARLOS EDUARDO MACHADO",
+          "CPF": 82504253087,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC4",
+          "Nome": "MARCOS FERNANDO HAMES",
+          "CPF": 4146718996,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": [
+        {
+          "Componente": "S/I",
+          "Codigo_Item": 333307,
+          "Estoque_Real": "S/I",
+          "Estoque_Obrigatorio": "S/I",
+          "Observacao": 2
+        }
+      ]
+    },
+    {
+      "Sigla": "SSC7",
+      "Unidade": "Lages",
+      "Regional": "RSSC",
+      "Analista": "Flavio",
+      "Supervisor": "Felipe",
+      "Endereco": "R. Bruno Luersen, 873 - Jardim Panorâmico – Lages/ SC, CEP: 88524-005 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC7",
+          "Nome": "JOAO ELY ORTIZ COSTA JUNIOR",
+          "CPF": 11502802988,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SSC1",
+      "Unidade": "Joinville",
+      "Regional": "PRSC",
+      "Analista": "Washington",
+      "Supervisor": "Felipe",
+      "Endereco": "Rodovia BR 101, nº 46659, Bairro Santa Catarina, Joinville/SC, CEP 89.233-190 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC1",
+          "Nome": "FERNANDO SILVA SANTA BRIGIDA",
+          "CPF": 55699812253,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC1",
+          "Nome": "VICTOR CILUS",
+          "CPF": 70380021200,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SSC2",
+      "Unidade": "São josé (Florianopolis)",
+      "Regional": "PRSC",
+      "Analista": "Washington",
+      "Supervisor": "Felipe",
+      "Endereco": "Rua Edgard Hoffmann, 496 - Biguaçu, SC   - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC2",
+          "Nome": "EDUARL JOSE GARCIA FIGUERA",
+          "CPF": 71293135100,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC2",
+          "Nome": "LUIZ FELIPE GUTERRES DE MOURA",
+          "CPF": 5969148067,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC2",
+          "Nome": "ROLMAN RAMON GONZALEZ MARVAL",
+          "CPF": 71889153184,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SSC3",
+      "Unidade": "Gaspar (Blumenau)",
+      "Regional": "PRSC",
+      "Analista": "Washington",
+      "Supervisor": "Felipe",
+      "Endereco": "Rua Madre Paulina, 560 - Bairro Sete de Setembro, Gaspar/SC - CEP 89115-065 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC3",
+          "Nome": "JORGE ARMANDO DOS SANTOS MIRANDA",
+          "CPF": 90642031215,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SSC3",
+          "Nome": "LIDIANE VILHENA MARTINS",
+          "CPF": 1444198238,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SSC5",
+      "Unidade": "Morro da Fumaça (Criciúma)",
+      "Regional": "PRSC",
+      "Analista": "Washington",
+      "Supervisor": "Felipe",
+      "Endereco": "Rod. Genésio Mazon, 4 - Palladini, Morro da Fumaça - SC, 88830-000 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SSC5",
+          "Nome": "JAIR DE SOUZA",
+          "CPF": 59374985934,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SSC8",
+      "Unidade": "Itajai",
+      "Regional": "PRSC",
+      "Analista": "Washington",
+      "Supervisor": "Felipe",
+      "Endereco": "SC-412 - Rod. Jorge Lacerda, 1010 - Espinheiros, Itajaí/SC, 88317-100",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [],
+      "estoque": []
+    },
+    {
+      "Sigla": "SPR4",
+      "Unidade": "Pato Branco",
+      "Regional": "PRSC",
+      "Analista": "Daniel",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-158 - Vila Esperança, São Bráz - Pato Branco/PR\nCondomínio Carba Logística Galpão 1, CEP: 85503-301 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR4",
+          "Nome": "EVANDRO DA SILVA",
+          "CPF": 6641308952,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR4",
+          "Nome": "PAULO GIOVANI DUARTE PIRES DA CUNHA",
+          "CPF": 6927768939,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SPR5",
+      "Unidade": "Guarapuava",
+      "Regional": "PRSC",
+      "Analista": "Mayara",
+      "Supervisor": "Jonas",
+      "Endereco": "BR-277, KM348 - Jardim das Americas, Guarapuava/PR, CEP: 85030-230 - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR5",
+          "Nome": "JOSE LORIEL DA ROCHA",
+          "CPF": 6135995944,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    },
+    {
+      "Sigla": "SPR3",
+      "Unidade": "Cascavel",
+      "Regional": "PRSC",
+      "Analista": "Daniel",
+      "Supervisor": "Jonas",
+      "Endereco": "Rodovia Federal BR 277, KM 584, Lote 391-C-13A, Cascavel/PR - Maps",
+      "esteiras": [],
+      "paineis_unid": [],
+      "tecnicos": [
+        {
+          "SIGLA": "SPR3",
+          "Nome": "ALESSANDRO NETO CORTES",
+          "CPF": 10426953932,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR3",
+          "Nome": "CRISTHOFER FELIPE DE OLIVEIRA",
+          "CPF": 1143856961,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        },
+        {
+          "SIGLA": "SPR3",
+          "Nome": "FELIPE VILLATORE WERNER",
+          "CPF": 7301054904,
+          "Telefone": "S/I",
+          "Endereco": "S/I"
+        }
+      ],
+      "estoque": []
+    }
+  ]
+}

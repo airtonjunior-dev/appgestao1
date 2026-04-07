@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>GPS Maintenance Portal | Regional SUL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #1e2255; border-radius: 10px; }
+        .tab-btn.active { background-color: #FFF159 !important; color: #2D3277 !important; border-color: #FFF159 !important; }
+        .regional-content.hidden { display: none; }
+    </style>
+</head>
+<body class="bg-slate-100 flex h-screen overflow-hidden">
+
+    <aside class="w-80 bg-[#2D3277] text-white flex flex-col shadow-2xl z-20">
+        <div class="p-6 bg-[#FFF159] text-[#2D3277] font-black border-b border-yellow-600 italic uppercase text-center tracking-tighter">
+            GPS MAINTENANCE SUL
+        </div>
+        
+        <div class="p-4 border-b border-white/10">
+            <button onclick="showHome()" class="w-full mb-4 bg-yellow-400 text-[#2D3277] font-black p-3 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all shadow-md">
+                <i data-lucide="bar-chart-3" class="w-5 h-5"></i> VISÃO GERAL GAIOLAS
+            </button>
+            <input type="text" id="unitSearch" oninput="filterUnits()" placeholder="Procurar unidade..." class="w-full bg-[#1e2255] border-none rounded-lg p-3 text-sm text-white outline-none ring-yellow-400 focus:ring-2">
+        </div>
+        
+        <div class="flex-1 overflow-y-auto">
+            <div id="menu-regionais" class="p-4 space-y-2"></div>
+
+            <div class="p-4 mt-4 border-t border-white/10">
+                <h3 class="text-[#FFF159] text-[10px] font-black uppercase mb-4 px-2 tracking-widest opacity-70 italic text-center">Links & Atalhos Úteis</h3>
+                <div id="sidebar-links" class="space-y-2"></div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto p-8 relative bg-slate-50">
+        
+        <div id="home-view" class="space-y-6">
+            <header class="mb-8 border-b-4 border-blue-900 pb-6">
+                <h1 class="text-4xl font-black text-slate-800 uppercase italic">Status Geral de Gaiolas</h1>
+                <p class="text-slate-500 font-medium">Histórico consolidado de pendências reportadas pelas unidades</p>
+            </header>
+            
+            <div class="bg-white rounded-3xl border shadow-sm overflow-hidden italic">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-800 text-white uppercase font-black text-[10px]">
+                        <tr><th class="p-4">Data</th><th class="p-4">Unidade</th><th class="p-4">Técnico</th><th class="p-4 text-center">Quantidade</th></tr>
+                    </thead>
+                    <tbody id="gaiolas-global-body" class="divide-y divide-slate-100"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <header class="mb-8 border-b-4 border-yellow-400 pb-6 bg-white p-6 rounded-3xl shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 id="view-unidade" class="text-4xl font-black text-slate-800 uppercase italic tracking-tighter">--</h1>
+                        <p id="view-endereco" class="text-slate-500 mt-2 font-medium italic text-xs">--</p>
+                    </div>
+                    <div class="text-right space-y-1">
+                        <div class="bg-blue-50 px-3 py-1 rounded text-[10px] font-black text-blue-900 uppercase">Analista: <span id="view-analista" class="text-slate-600 font-normal ml-1">--</span></div>
+                        <div class="bg-slate-50 px-3 py-1 rounded text-[10px] font-black text-slate-400 uppercase">Supervisor: <span id="view-supervisor" class="text-slate-600 font-normal ml-1">--</span></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex gap-2 mb-8 overflow-x-auto pb-2">
+                <button onclick="showTab('tab-esteiras', this)" class="tab-btn active px-6 py-2 bg-[#2D3277] text-white rounded-full text-[10px] font-black uppercase shadow-md transition-all border border-[#2D3277]">Esteiras</button>
+                <button onclick="showTab('tab-paineis', this)" class="tab-btn px-6 py-2 bg-[#2D3277] text-white rounded-full text-[10px] font-black uppercase shadow-sm border border-[#2D3277] transition-all">Painéis</button>
+                <button onclick="showTab('tab-pecas', this)" class="tab-btn px-6 py-2 bg-[#2D3277] text-white rounded-full text-[10px] font-black uppercase shadow-sm border border-[#2D3277] transition-all">Estoque Crítico</button>
+                <button onclick="showTab('tab-tecnicos', this)" class="tab-btn px-6 py-2 bg-[#2D3277] text-white rounded-full text-[10px] font-black uppercase shadow-sm border border-[#2D3277] transition-all">Técnicos</button>
+            </div>
+
+            <div id="tab-esteiras" class="tab-content space-y-6"></div>
+            <div id="tab-paineis" class="tab-content hidden space-y-6"></div>
+            <div id="tab-pecas" class="tab-content hidden">
+                <table class="w-full text-left text-xs bg-white rounded-2xl border shadow-sm overflow-hidden">
+                    <thead class="bg-slate-800 text-white uppercase font-black text-[10px]">
+                        <tr><th class="p-4 uppercase">Componente</th><th class="p-4 uppercase text-center">Código do Item</th><th class="p-4 text-center uppercase">Estoque Real</th><th class="p-4 text-center uppercase">Estoque Obrigatorio</th><th class="p-4 uppercase">Observação/Pedido</th></tr>
+                    </thead>
+                    <tbody id="pecas-table-body" class="divide-y divide-slate-100 italic"></tbody>
+                </table>
+            </div>
+            <div id="tab-tecnicos" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+    </main>
+
+    <script>
+        let db = {};
+        async function init() {
+            try {
+                const res = await fetch('dados.json?v=' + Date.now());
+                db = await res.json();
+                renderMenuByRegional();
+                renderSidebarLinks();
+                renderGaiolasHome();
+                lucide.createIcons();
+            } catch (e) { console.error("Erro ao carregar dados."); }
+        }
+
+        function renderMenuByRegional() {
+            const container = document.getElementById('menu-regionais');
+            const regionais = [...new Set(db.unidades.map(u => u.Regional))].sort();
+            container.innerHTML = regionais.map(reg => `
+                <div class="regional-group border-b border-white/5 pb-2">
+                    <button onclick="toggleRegional('${reg}')" class="w-full flex justify-between items-center p-2 text-[#FFF159] font-black text-[11px] uppercase tracking-widest hover:bg-white/5 rounded-lg">
+                        <span>REGIONAL ${reg}</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" id="icon-${reg}"></i>
+                    </button>
+                    <div id="content-${reg}" class="regional-content hidden space-y-1 mt-2">
+                        ${db.unidades.filter(u => u.Regional === reg).map(u => `
+                            <button onclick="loadUnit('${u.Sigla}')" class="unit-btn w-full text-left p-2 pl-4 rounded-lg hover:bg-white/10 transition group" data-nome="${(u.Sigla + " " + u.Unidade).toLowerCase()}">
+                                <span class="text-[9px] font-black text-white/40 block">${u.Sigla}</span>
+                                <span class="text-white text-[11px] font-bold">${u.Unidade}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>`).join('');
+            lucide.createIcons();
+        }
+
+        function toggleRegional(reg) {
+            const content = document.getElementById(`content-${reg}`);
+            const icon = document.getElementById(`icon-${reg}`);
+            const isHidden = content.classList.contains('hidden');
+            if(isHidden) { content.classList.remove('hidden'); icon.style.transform = "rotate(180deg)"; }
+            else { content.classList.add('hidden'); icon.style.transform = "rotate(0deg)"; }
+        }
+
+        function loadUnit(sigla) {
+            const u = db.unidades.find(x => x.Sigla === sigla);
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('view-unidade').innerText = u.Unidade;
+            document.getElementById('view-endereco').innerText = u.Endereco;
+            document.getElementById('view-analista').innerText = u.Analista;
+            document.getElementById('view-supervisor').innerText = u.Supervisor;
+
+            document.getElementById('tab-esteiras').innerHTML = u.esteiras.map(e => {
+                const pecas = db.bib_est[e.Modelo_Chave] || [];
+                return `
+                <div class="bg-white p-6 rounded-2xl border-l-[10px] border-blue-900 shadow-sm border relative">
+                    <div class="absolute top-4 right-4 bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-black uppercase border border-slate-200">${e.Qtd_Modulos} Módulos</div>
+                    <h3 class="font-black text-xl text-blue-900 italic uppercase">${e.TAG} <span class="text-[10px] text-slate-300 font-normal ml-4 uppercase tracking-widest">${e.Modelo_Chave}</span></h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-4 text-[9px] font-bold text-slate-500 uppercase italic">
+                        ${pecas.map(p => `<div class="bg-slate-50 p-2 rounded border border-slate-100">/ ${p.Item}</div>`).join('')}
+                    </div>
+                </div>`;
+            }).join('');
+
+            document.getElementById('tab-paineis').innerHTML = u.paineis_unid.map(p => {
+                const comp = db.bib_pai[p.Modelo_Painel] || [];
+                return `<div class="bg-white p-6 rounded-2xl border-l-[10px] border-yellow-500 shadow-sm border">
+                    <h3 class="font-black text-xl text-slate-800 italic uppercase">${p.TAG_Painel}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4 text-[10px]">
+                        ${comp.map(c => `<div class="flex justify-between border-b pb-1 font-bold italic"><span>${c.Item}</span><span class="text-blue-700 font-mono font-black">${c.Codigo_Fabricante}</span></div>`).join('')}
+                    </div>
+                </div>`;
+            }).join('');
+
+            document.getElementById('tab-tecnicos').innerHTML = (u.tecnicos || []).map(t => `
+                <div class="bg-white p-5 rounded-2xl border shadow-sm flex items-center gap-4">
+                    <div class="bg-blue-100 text-blue-900 p-3 rounded-full">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-slate-800 uppercase italic">${t.Nome}</h4>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tight">CPF: ${t.CPF} | TEL: ${t.Telefone}</p>
+                        <p class="text-[9px] text-slate-400 mt-1 italic">${t.Endereco || 'Endereço não informado'}</p>
+                    </div>
+                </div>
+            `).join('') || '<div class="col-span-full text-center p-10 text-slate-400 italic">Nenhum técnico cadastrado para esta unidade.</div>';
+
+            let rows = '';
+            (u.estoque || []).forEach(item => {
+                const isCritico = item.Estoque_Real < item.Estoque_Obrigatorio;
+                rows += `
+                    <tr class="hover:bg-slate-50 italic ${isCritico ? 'bg-red-50' : ''}">
+                        <td class="p-4 font-bold uppercase text-slate-700 text-[11px]">${item.Componente}</td>
+                        <td class="p-4 font-mono font-black text-blue-700 text-center">${item.Codigo_Item}</td>
+                        <td class="p-4 text-center">
+                            <span class="px-3 py-1 rounded-full font-black ${isCritico ? 'bg-red-600 text-white' : 'bg-green-100 text-green-700'}">
+                                ${item.Estoque_Real}
+                            </span>
+                        </td>
+                        <td class="p-4 text-center font-black text-slate-400">${item.Estoque_Obrigatorio}</td>
+                        <td class="p-4 text-[10px] text-slate-500 max-w-[200px] truncate" title="${item.Observacao}">
+                            ${item.Observacao !== 'S/I' ? `<span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">${item.Observacao}</span>` : '<span class="opacity-30">-</span>'}
+                        </td>
+                    </tr>`;
+            });
+            document.getElementById('pecas-table-body').innerHTML = rows || '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Nenhum item em estoque para esta unidade.</td></tr>';
+            lucide.createIcons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showHome() { document.getElementById('dashboard').classList.add('hidden'); document.getElementById('home-view').classList.remove('hidden'); }
+
+        function showTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active', 'bg-[#FFF159]', 'text-[#2D3277]'); b.classList.add('bg-[#2D3277]', 'text-white'); });
+            btn.classList.add('active');
+        }
+
+        function filterUnits() {
+            const val = document.getElementById('unitSearch').value.toLowerCase();
+            document.querySelectorAll('.unit-btn').forEach(btn => {
+                const match = btn.dataset.nome.includes(val);
+                btn.style.display = match ? 'block' : 'none';
+                if(val.length > 0 && match) btn.parentElement.classList.remove('hidden');
+            });
+        }
+
+        function renderSidebarLinks() {
+            const container = document.getElementById('sidebar-links');
+            container.innerHTML = db.links.map(l => `<a href="${l.Link}" target="_blank" class="block p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-[#FFF159] hover:text-[#2D3277] transition-all group italic"><p class="text-[10px] font-black uppercase tracking-tighter">${l.Título}</p><p class="text-[9px] opacity-40 group-hover:opacity-100 mt-0.5 leading-tight">${l.Texto}</p></a>`).join('');
+        }
+
+        function renderGaiolasHome() {
+            const container = document.getElementById('gaiolas-global-body');
+            container.innerHTML = db.gaiolas_global.map(g => `<tr class="hover:bg-slate-50 italic"><td class="p-4 text-slate-400 font-mono text-[10px]">${g['Carimbo de data/hora']}</td><td class="p-4 font-black text-blue-900 uppercase">${g['Qual sua unidade']}</td><td class="p-4 font-bold text-slate-600 uppercase">${g['Qual seu nome']}</td><td class="p-4 text-center"><span class="px-3 py-1 rounded-full font-black ${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)'] > 10 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700'}">${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)']}</span></td></tr>`).join('');
+        }
+        init();
+    </script>
+</body>
+</html>

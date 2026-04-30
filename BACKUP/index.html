@@ -5,6 +5,7 @@
     <title>GPS Maintenance Portal | Regional SUL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -12,6 +13,12 @@
         ::-webkit-scrollbar-thumb { background: #1e2255; border-radius: 10px; }
         .tab-btn.active { background-color: #FFF159 !important; color: #2D3277 !important; border-color: #FFF159 !important; }
         .regional-content.hidden { display: none; }
+        .input-std { @apply w-full bg-slate-100 border-none rounded-xl p-3 text-sm outline-none ring-blue-500 focus:ring-2; }
+        .label-min { @apply block text-[9px] font-black uppercase text-slate-400 mb-1 tracking-widest; }
+        /* Fallback for environments without tailwind @apply support in <style> */
+        .input-std { width: 100%; background: #f1f5f9; border: none; border-radius: 0.75rem; padding: 0.75rem; font-size: 0.875rem; outline: none; }
+        .input-std:focus { box-shadow: 0 0 0 2px #3b82f6; }
+        .label-min { display: block; font-size: 9px; font-weight: 900; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px; letter-spacing: 0.05em; }
     </style>
 </head>
 <body class="bg-slate-100 flex h-screen overflow-hidden">
@@ -25,11 +32,48 @@
             <button onclick="showHome()" class="w-full mb-4 bg-yellow-400 text-[#2D3277] font-black p-3 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-300 transition-all shadow-md">
                 <i data-lucide="bar-chart-3" class="w-5 h-5"></i> VISÃO GERAL GAIOLAS
             </button>
+            <button onclick="exportDB()" class="w-full mb-4 bg-emerald-500 text-white font-black p-3 rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-400 transition-all shadow-sm text-[10px] uppercase">
+                <i data-lucide="download" class="w-4 h-4"></i> Exportar Alterações
+            </button>
             <input type="text" id="unitSearch" oninput="filterUnits()" placeholder="Procurar unidade..." class="w-full bg-[#1e2255] border-none rounded-lg p-3 text-sm text-white outline-none ring-yellow-400 focus:ring-2">
         </div>
         
         <div class="flex-1 overflow-y-auto">
             <div id="menu-regionais" class="p-4 space-y-2"></div>
+
+            <div class="p-4 border-t border-white/10">
+                <h3 class="text-[#FFF159] text-[10px] font-black uppercase mb-4 px-2 tracking-widest opacity-70 italic text-center">Central de Gestão (Contrato)</h3>
+                <div class="space-y-2">
+                    <button onclick="showCatalog('bib_est')" class="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-yellow-400 hover:text-[#2D3277] transition-all group italic flex items-center gap-2">
+                        <i data-lucide="cog" class="w-4 h-4"></i>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-tighter">Catálogo de Esteiras</p>
+                            <p class="text-[8px] opacity-40 group-hover:opacity-100 leading-tight">Modelos Globais e Peças</p>
+                        </div>
+                    </button>
+                    <button onclick="showCatalog('bib_pai')" class="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-yellow-400 hover:text-[#2D3277] transition-all group italic flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-tighter">Catálogo de Painéis</p>
+                            <p class="text-[8px] opacity-40 group-hover:opacity-100 leading-tight">Diagramas e Componentes</p>
+                        </div>
+                    </button>
+                    <button onclick="showTechnicians()" class="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-yellow-400 hover:text-[#2D3277] transition-all group italic flex items-center gap-2">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-tighter">Catálogo de Técnicos</p>
+                            <p class="text-[8px] opacity-40 group-hover:opacity-100 leading-tight">Equipe Regional e Escalas</p>
+                        </div>
+                    </button>
+                    <button onclick="openImportModal()" class="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-green-400 hover:text-[#2D3277] transition-all group italic flex items-center gap-2 mt-4">
+                        <i data-lucide="file-up" class="w-4 h-4"></i>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-tighter">Importação em Massa</p>
+                            <p class="text-[8px] opacity-40 group-hover:opacity-100 leading-tight">Colar Dados de Planilha</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
 
             <div class="p-4 mt-4 border-t border-white/10">
                 <h3 class="text-[#FFF159] text-[10px] font-black uppercase mb-4 px-2 tracking-widest opacity-70 italic text-center">Links & Atalhos Úteis</h3>
@@ -78,7 +122,9 @@
             </div>
 
             <div id="tab-esteiras" class="tab-content space-y-6"></div>
-            <div id="tab-paineis" class="tab-content hidden space-y-6"></div>
+            <div id="tab-paineis" class="tab-content hidden space-y-6">
+                <!-- Botão Adicionar Painel será inserido dinamicamente -->
+            </div>
             <div id="tab-pecas" class="tab-content hidden">
                 <table class="w-full text-left text-xs bg-white rounded-2xl border shadow-sm overflow-hidden">
                     <thead class="bg-slate-800 text-white uppercase font-black text-[10px]">
@@ -87,21 +133,181 @@
                     <tbody id="pecas-table-body" class="divide-y divide-slate-100 italic"></tbody>
                 </table>
             </div>
-            <div id="tab-tecnicos" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            <div id="tab-tecnicos" class="tab-content hidden">
+                <div class="flex justify-end mb-4">
+                    <button onclick="openModal('tecnico', { sigla: window.currentUnit })" class="bg-[#2D3277] text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase italic flex items-center gap-2 hover:bg-slate-700 transition-all shadow-sm">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Cadastrar Novo Técnico
+                    </button>
+                </div>
+                <div id="tecnicos-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+        </div>
+
+        <!-- Nova View: Catálogo Global -->
+        <div id="catalog-view" class="hidden space-y-8">
+            <header class="mb-8 border-b-4 border-[#2D3277] pb-6 bg-white p-6 rounded-3xl shadow-sm">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 id="catalog-title" class="text-4xl font-black text-slate-800 uppercase italic tracking-tighter">--</h1>
+                        <p class="text-slate-500 mt-2 font-medium italic text-xs">Visão global de todos os modelos do contrato</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex gap-4 mb-4">
+                 <button onclick="openModal('modelo')" class="bg-slate-800 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase italic flex items-center gap-2 hover:bg-slate-700 transition-all">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Novo Modelo (Catálogo)
+                </button>
+            </div>
+
+            <div id="catalog-container" class="grid grid-cols-1 xl:grid-cols-2 gap-6"></div>
+        </div>
+
+        <!-- Nova View: Catálogo Global de Técnicos -->
+        <div id="technicians-view" class="hidden space-y-8">
+            <header class="mb-8 border-b-4 border-[#2D3277] pb-6 bg-white p-6 rounded-3xl shadow-sm">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-4xl font-black text-slate-800 uppercase italic tracking-tighter">Catálogo de Técnicos</h1>
+                        <p class="text-slate-500 mt-2 font-medium italic text-xs">Gestão centralizada da equipe regional</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-4">
+                 <div class="flex-1">
+                    <label class="label-min">Pesquisa Global (Nome, Cargo ou Unidade)</label>
+                    <input type="text" id="tech-search" oninput="renderTechniciansList()" placeholder="Ex: João, Mecânico, SUL..." class="input-std">
+                 </div>
+                 <div class="flex items-end">
+                    <button onclick="openModal('tecnico', { sigla: window.currentUnit || 'SUL' })" class="bg-slate-800 text-white px-4 py-2 h-[44px] rounded-xl font-black text-[10px] uppercase italic flex items-center gap-2 hover:bg-slate-700 transition-all shadow-sm">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Novo Técnico
+                    </button>
+                 </div>
+            </div>
+
+            <div id="technicians-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- Modal Genérico para Cadastro/Edição -->
+        <div id="modal-add-modelo" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+                <div class="bg-[#2D3277] p-6 text-white flex justify-between items-center">
+                    <h3 class="font-black italic uppercase tracking-widest text-lg">Título do Modal</h3>
+                    <button onclick="closeModal('modal-add-modelo')"><i data-lucide="x" class="w-6 h-6"></i></button>
+                </div>
+                <div class="p-8 space-y-6 overflow-y-auto font-sans">
+                    <div id="modal-body-content" class="space-y-4">
+                        <!-- Conteúdo dinâmico aqui -->
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 pt-4">
+                        <button onclick="closeModal('modal-add-modelo')" class="bg-slate-100 text-slate-500 font-black p-4 rounded-xl uppercase text-xs hover:bg-slate-200 transition-all">Cancelar</button>
+                        <button onclick="saveNewModel()" class="bg-yellow-400 text-[#2D3277] font-black p-4 rounded-xl uppercase text-xs hover:bg-yellow-300 transition-all shadow-md">Salvar Alterações</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Importação em Massa -->
+        <div id="modal-import" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+                <div class="bg-green-600 p-6 text-white flex justify-between items-center">
+                    <div>
+                        <h3 class="font-black italic uppercase tracking-widest text-lg">📦 Importação em Massa (Google Forms / Planilha)</h3>
+                        <p class="text-[10px] opacity-60 uppercase font-bold tracking-tighter">Cole as linhas da sua planilha abaixo (Exclua os títulos se houver)</p>
+                    </div>
+                    <button onclick="closeModal('modal-import')"><i data-lucide="x" class="w-6 h-6"></i></button>
+                </div>
+                <div class="p-8 space-y-4 overflow-y-auto">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                         <p class="text-[10px] font-black text-slate-400 uppercase italic mb-2">Ordem Sugerida das Colunas:</p>
+                         <div class="flex gap-2 text-[8px] font-black text-slate-600 uppercase italic">
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Unidade</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">TAG</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Modelo (Chave)</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Módulos</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Comprimentos (Vígula)</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Localização/Painel</span>
+                            <span class="bg-slate-200 px-2 py-0.5 rounded">Observação</span>
+                         </div>
+                    </div>
+                    <textarea id="import-data" class="w-full h-80 p-4 font-mono text-[10px] bg-slate-50 border rounded-2xl focus:ring-2 focus:ring-green-500 outline-none" placeholder="Copie as linhas da planilha e cole aqui..."></textarea>
+                    
+                    <div id="import-preview" class="hidden text-[10px] font-bold py-2 px-4 bg-yellow-50 text-yellow-800 rounded-lg">
+                        Processando dados... aguarde.
+                    </div>
+
+                    <button onclick="processBulkImport()" class="w-full bg-green-600 text-white font-black p-4 rounded-xl flex items-center justify-center gap-2 hover:bg-green-500 transition-all shadow-md uppercase text-sm">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i> Iniciar Importação para o Supabase
+                    </button>
+                    <p class="text-center text-[9px] text-slate-400 italic">Cada linha será analisada e vinculada ao catálogo automaticamente.</p>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
-        let db = {};
+        // CONFIGURAÇÃO SUPABASE
+        const SUPABASE_URL = "https://lmhzwaymhlfxlettrbkk.supabase.co";
+        const SUPABASE_ANON_KEY = "sb_publishable_LXNggTYlRoCDcD4LyuP9Sg_8T6aX94e";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let db = { unidades: [], links: [], gaiolas_global: [], bib_est: {}, bib_pai: {} };
+
         async function init() {
             try {
-                const res = await fetch('dados.json?v=' + Date.now());
-                db = await res.json();
+                // 1. Carregar Unidades
+                const { data: units, error: errUni } = await supabaseClient.from('unidades').select('*');
+                if (errUni) throw errUni;
+                // Mapeia para suportar .Sigla e .sigla (Case Sensitivity fix)
+                db.unidades = units.map(u => ({ ...u, Sigla: u.sigla, Unidade: u.nome, Regional: u.regional, Endereco: u.endereco, Analista: u.analista, Supervisor: u.supervisor }));
+
+                // 2. Carregar Links
+                const { data: links, error: errLinks } = await supabaseClient.from('links_uteis').select('*');
+                db.links = links || [];
+
+                // 3. Carregar Histórico de Gaiolas (Últimos registros)
+                const { data: gaiolas, error: errGaiolas } = await supabaseClient.from('historico_gaiolas').select('*').order('carimbo_data', { ascending: false }).limit(20);
+                // Mapeia para os nomes antigos usados no HTML
+                db.gaiolas_global = (gaiolas || []).map(g => ({
+                    'Carimbo de data/hora': new Date(g.carimbo_data).toLocaleString(),
+                    'SIGLA': g.sigla_unidade,
+                    'Qual seu nome': g.tecnico_nome,
+                    'Quantas Gaiolas temos pendente na unidade hoje ? (Número)': g.quantidade
+                }));
+
+                // 4. Carregar Bibliotecas Globais (O "DNA" dos equipamentos)
+                const { data: models, error: errModels } = await supabaseClient
+                    .from('modelos_equipamento')
+                    .select(`
+                        id, modelo_chave, tipo, marca, manual_link,
+                        pecas_modelo ( id, item, codigo_item, referencia, tamanho, is_critico, descricao, tipo )
+                    `);
+                
+                if (models) {
+                    models.forEach(m => {
+                        const key = m.tipo === 'esteira' ? 'bib_est' : 'bib_pai';
+                        db[key][m.modelo_chave] = m.pecas_modelo.map(p => ({
+                            ...p,
+                            Marca: m.marca,
+                            'Código do Item': p.codigo_item,
+                            'Referência': p.referencia,
+                            'Tamanho': p.tamanho,
+                            'Crítico': p.is_critico ? 'SIM' : 'NÃO',
+                            'Manual': m.manual_link
+                        }));
+                    });
+                }
+
                 renderMenuByRegional();
                 renderSidebarLinks();
                 renderGaiolasHome();
                 lucide.createIcons();
-            } catch (e) { console.error("Erro ao carregar dados."); }
+            } catch (e) { 
+                console.error("Erro ao carregar dados do Supabase:", e); 
+                alert("Erro ao conectar com o banco de dados. Verifique a configuração.");
+            }
         }
 
         function renderMenuByRegional() {
@@ -133,10 +339,74 @@
             else { content.classList.add('hidden'); icon.style.transform = "rotate(0deg)"; }
         }
 
-        function loadUnit(sigla) {
-            const u = db.unidades.find(x => x.Sigla === sigla);
+        async function loadUnit(sigla) {
+            const u = db.unidades.find(x => x.Sigla === sigla || x.sigla === sigla);
+            
+            // Buscar dados específicos da unidade no Supabase
+            const { data: ativos } = await supabaseClient.from('ativos_unidade')
+                .select('*, modelos_equipamento(modelo_chave, tipo)')
+                .eq('sigla_unidade', sigla);
+            
+            const { data: estoque } = await supabaseClient.from('estoque_unidade')
+                .select('*')
+                .eq('sigla_unidade', sigla);
+
+            const { data: tecnicos } = await supabaseClient.from('tecnicos')
+                .select('*')
+                .eq('sigla_unidade', sigla);
+
+            u.esteiras = (ativos || []).filter(a => a.modelos_equipamento.tipo === 'esteira').map(a => ({
+                id: a.id,
+                TAG: a.tag,
+                Modelo_Chave: a.modelos_equipamento.modelo_chave,
+                Qtd_Modulos: a.qtd_modulos,
+                Comprimento: a.comprimento_modulo,
+                Lista_Comprimentos: a.lista_comprimentos,
+                Info: a.info_adicional
+            }));
+
+            u.paineis_unid = (ativos || []).filter(a => a.modelos_equipamento.tipo === 'painel').map(a => ({
+                TAG_Painel: a.tag,
+                Modelo_Painel: a.modelos_equipamento.modelo_chave,
+                Localizacao: a.localizacao
+            }));
+
+            u.tecnicos = tecnicos || [];
+            
+            // CONSOLIDAÇÃO DE ESTOQUE CRÍTICO AUTOMÁTICO
+            // 1. Pega estoque manual
+            let estoqueConsolidado = (estoque || []).map(i => ({
+                Componente: i.componente,
+                Codigo_Item: i.codigo_item,
+                Estoque_Real: i.estoque_real,
+                Estoque_Obrigatorio: i.estoque_obrigatorio,
+                Observacao: i.observacao,
+                Origem: 'Manual'
+            }));
+
+            // 2. Pega peças críticas dos ativos da unidade
+            u.esteiras.forEach(est => {
+                const pecasDNA = db.bib_est[est.Modelo_Chave] || [];
+                pecasDNA.filter(p => p.Crítico === 'SIM').forEach(p => {
+                    // Se não estiver no estoque ainda, adiciona
+                    if (!estoqueConsolidado.some(idx => idx.Codigo_Item === p.codigo_item)) {
+                        estoqueConsolidado.push({
+                            Componente: p.item,
+                            Codigo_Item: p.codigo_item,
+                            Estoque_Real: 0,
+                            Estoque_Obrigatorio: 1, // Default para item crítico
+                            Observacao: `Auto-Detectado (${est.TAG})`,
+                            Origem: 'Auto'
+                        });
+                    }
+                });
+            });
+
+            u.estoque = estoqueConsolidado;
+
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
+            window.currentUnit = sigla; // Global para o botão de instalar
             document.getElementById('view-unidade').innerText = u.Unidade;
             document.getElementById('view-endereco').innerText = u.Endereco;
             document.getElementById('view-analista').innerText = u.Analista;
@@ -145,37 +415,103 @@
             document.getElementById('tab-esteiras').innerHTML = u.esteiras.map(e => {
                 const pecas = db.bib_est[e.Modelo_Chave] || [];
                 return `
-                <div class="bg-white p-6 rounded-2xl border-l-[10px] border-blue-900 shadow-sm border relative">
-                    <div class="absolute top-4 right-4 bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-black uppercase border border-slate-200">${e.Qtd_Modulos} Módulos</div>
-                    <h3 class="font-black text-xl text-blue-900 italic uppercase">${e.TAG} <span class="text-[10px] text-slate-300 font-normal ml-4 uppercase tracking-widest">${e.Modelo_Chave}</span></h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-4 text-[9px] font-bold text-slate-500 uppercase italic">
-                        ${pecas.map(p => `<div class="bg-slate-50 p-2 rounded border border-slate-100">/ ${p.Item}</div>`).join('')}
+                <div class="bg-white rounded-3xl border shadow-sm overflow-hidden mb-8">
+                    <div class="bg-[#2D3277] p-4 flex justify-between items-center text-white italic">
+                        <div>
+                            <span class="text-[10px] font-black opacity-50 block uppercase tracking-widest">${e.Modelo_Chave} | ${e.Info || 'Sem obs'}</span>
+                            <h3 class="font-black text-xl uppercase tracking-tighter">${e.TAG}</h3>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <button onclick="openEditAsset('${encodeURIComponent(JSON.stringify(e))}')" class="p-2 hover:bg-white/20 rounded-lg transition text-white/50 hover:text-white"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+                            <button onclick="deleteRecord('ativos_unidade', '${e.id}')" class="p-2 hover:bg-red-500 rounded-lg transition text-white/50 hover:text-white"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                            <div class="text-right">
+                                <p class="text-[8px] font-black opacity-50 uppercase">Comp. Total</p>
+                                <p class="text-xs font-black">
+                                    ${e.Lista_Comprimentos ? e.Lista_Comprimentos.reduce((a,b)=>a+b,0).toFixed(1) : (e.Qtd_Modulos * (e.Comprimento || 0)).toFixed(1)}m
+                                </p>
+                            </div>
+                            <div class="bg-yellow-400 text-[#2D3277] px-4 py-1 rounded-full text-[10px] font-black uppercase shadow-sm">
+                                ${e.Qtd_Modulos} Mód. 
+                                <span class="text-[7px] block opacity-70">
+                                    ${e.Lista_Comprimentos ? e.Lista_Comprimentos.join('m + ') + 'm' : (e.Comprimento || 0) + 'm/cada'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-[10px] border-collapse">
+                            <thead class="bg-slate-50 border-b text-slate-400 font-black uppercase tracking-widest italic">
+                                <tr>
+                                    <th class="p-3">Tipo</th>
+                                    <th class="p-3">Item / Descrição</th>
+                                    <th class="p-3 text-center">Código</th>
+                                    <th class="p-3">Medida</th>
+                                    <th class="p-3 text-center">Crítico</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50 italic">
+                                ${pecas.map(p => {
+                                    const isCrit = p.Crítico === 'SIM' || p.Crítico === 'Sim' || p.Crítico === 'S' || p.is_critico;
+                                    return `
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-bold text-slate-400">${p.tipo || 'Geral'}</td>
+                                        <td class="p-3 font-black text-blue-900 uppercase">${p.item || p.Item}</td>
+                                        <td class="p-3 text-center font-mono font-black text-slate-400">${p.codigo_item || p['Código do Item']}</td>
+                                        <td class="p-3 text-slate-500">${p.medida || '-'}</td>
+                                        <td class="p-3 text-center">
+                                            ${isCrit ? '<span class="bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-black text-[8px] uppercase">CRÍTICO</span>' : '<span class="opacity-20">-</span>'}
+                                        </td>
+                                    </tr>`;
+                                }).join('') || '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Nenhuma informação técnica vinculada a este modelo.</td></tr>'}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-4 py-2 bg-slate-50 border-t flex justify-end">
+                         <button onclick="openModal('peca', { model: '${e.Modelo_Chave}' })" class="text-[9px] font-black text-blue-600 uppercase flex items-center gap-1 hover:underline">
+                            <i data-lucide="plus" class="w-3 h-3"></i> Adicionar Peça
+                        </button>
                     </div>
                 </div>`;
-            }).join('');
+            }).join('') || '<div class="text-center p-20 text-slate-400 italic">Nenhum equipamento cadastrado para esta unidade.</div>';
 
-            document.getElementById('tab-paineis').innerHTML = u.paineis_unid.map(p => {
+            document.getElementById('tab-paineis').innerHTML = `
+                <div class="flex justify-end mb-4">
+                    <button onclick="openModal('instalar_painel', { sigla: '${sigla}' })" class="bg-yellow-400 text-[#2D3277] px-4 py-2 rounded-xl font-black text-[10px] uppercase italic flex items-center gap-2 hover:bg-yellow-300 transition-all shadow-sm">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Instalar Novo Painel
+                    </button>
+                </div>
+            ` + u.paineis_unid.map(p => {
                 const comp = db.bib_pai[p.Modelo_Painel] || [];
                 return `<div class="bg-white p-6 rounded-2xl border-l-[10px] border-yellow-500 shadow-sm border">
-                    <h3 class="font-black text-xl text-slate-800 italic uppercase">${p.TAG_Painel}</h3>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-black text-xl text-slate-800 italic uppercase">${p.TAG_Painel}</h3>
+                        <span class="text-[9px] font-black bg-slate-100 px-2 py-1 rounded text-slate-400 uppercase">${p.Modelo_Painel}</span>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4 text-[10px]">
-                        ${comp.map(c => `<div class="flex justify-between border-b pb-1 font-bold italic"><span>${c.Item}</span><span class="text-blue-700 font-mono font-black">${c.Codigo_Fabricante}</span></div>`).join('')}
+                        ${comp.map(c => `<div class="flex justify-between border-b pb-1 font-bold italic"><span>${c.Item}</span><span class="text-blue-700 font-mono font-black">${c.Codigo_Fabricante || c['Código do Item']}</span></div>`).join('')}
                     </div>
                 </div>`;
             }).join('');
 
-            document.getElementById('tab-tecnicos').innerHTML = (u.tecnicos || []).map(t => `
-                <div class="bg-white p-5 rounded-2xl border shadow-sm flex items-center gap-4">
+            document.getElementById('tecnicos-list').innerHTML = (u.tecnicos || []).map(t => `
+                <div class="bg-white p-5 rounded-2xl border shadow-sm flex items-center gap-4 relative group">
                     <div class="bg-blue-100 text-blue-900 p-3 rounded-full">
                         <i data-lucide="user" class="w-6 h-6"></i>
                     </div>
-                    <div>
-                        <h4 class="font-black text-slate-800 uppercase italic">${t.Nome}</h4>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tight">CPF: ${t.CPF} | TEL: ${t.Telefone}</p>
-                        <p class="text-[9px] text-slate-400 mt-1 italic">${t.Endereco || 'Endereço não informado'}</p>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-black text-slate-800 uppercase italic">${t.nome}</h4>
+                            <span class="text-[8px] font-black bg-blue-50 text-blue-600 px-2 py-0.5 rounded uppercase tracking-tighter">${t.cargo || 'Técnico'}</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tight mt-1">CPF: ${t.cpf || '---'} | TEL: ${t.telefone || '---'}</p>
+                        <div class="flex gap-4 mt-2 border-t pt-2 border-slate-50">
+                            <div class="text-[8px] font-black text-slate-400 uppercase italic"><i data-lucide="calendar" class="w-2.5 h-2.5 inline mr-1"></i>${t.escala || '---'}</div>
+                            <div class="text-[8px] font-black text-slate-400 uppercase italic"><i data-lucide="clock" class="w-2.5 h-2.5 inline mr-1"></i>${t.horario || '---'}</div>
+                        </div>
                     </div>
+                    <button onclick="deleteRecord('tecnicos', '${t.id}')" class="absolute top-2 right-2 p-1 text-slate-200 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
                 </div>
-            `).join('') || '<div class="col-span-full text-center p-10 text-slate-400 italic">Nenhum técnico cadastrado para esta unidade.</div>';
+            `).join('') || '<div class="col-span-full text-center p-10 text-slate-400 italic font-medium">Nenhum técnico cadastrado para esta unidade.</div>';
 
             let rows = '';
             (u.estoque || []).forEach(item => {
@@ -200,13 +536,512 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function showHome() { document.getElementById('dashboard').classList.add('hidden'); document.getElementById('home-view').classList.remove('hidden'); }
+        function showHome() { 
+            document.getElementById('dashboard').classList.add('hidden'); 
+            document.getElementById('catalog-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden'); 
+        }
+
+        async function showCatalog(tipo) {
+            window.currentCatalogType = tipo; // Guardar para o botão Novo Modelo
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('technicians-view').classList.add('hidden');
+            document.getElementById('catalog-view').classList.remove('hidden');
+            
+            const title = tipo === 'bib_est' ? 'Catálogo Global de Esteiras' : 'Catálogo Global de Painéis';
+            document.getElementById('catalog-title').innerText = title;
+
+            // Atualizar botão Novo Modelo para passar o tipo correto
+            const btnNovo = document.querySelector('#catalog-view button[onclick="openModal(\'modelo\')"]');
+            if (btnNovo) btnNovo.setAttribute('onclick', `openModal('modelo', { catalogType: '${tipo}' })`);
+
+            await renderCatalogList(tipo);
+        }
+
+        async function renderCatalogList(tipo) {
+            const container = document.getElementById('catalog-container');
+            const data = db[tipo] || {};
+            
+            db.currentCatalogIdMap = {}; // Guardar IDs dos modelos
+            const { data: models } = await supabaseClient.from('modelos_equipamento').select('id, modelo_chave, marca, manual_link');
+            if (models) models.forEach(m => db.currentCatalogIdMap[m.modelo_chave] = m);
+
+            container.innerHTML = Object.entries(data).map(([model, items]) => {
+                const globalData = db.currentCatalogIdMap[model] || {};
+                return `
+                <div class="bg-white rounded-3xl border shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-slate-800 p-5 flex justify-between items-center text-white italic">
+                        <div>
+                            <span class="text-[9px] font-black opacity-40 block uppercase tracking-widest">Modelo do Contrato</span>
+                            <h3 class="font-black text-lg uppercase tracking-tighter text-yellow-400">${model}</h3>
+                        </div>
+                        <div class="flex gap-2">
+                             <button onclick="openEditModel('${encodeURIComponent(JSON.stringify(globalData))}')" class="p-2 hover:bg-white/20 rounded-lg transition text-white/50 hover:text-white"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+                             <button onclick="deleteRecord('modelos_equipamento', '${globalData.id}')" title="Excluir Modelo" class="p-2 hover:bg-red-500 rounded-lg transition text-white/50 hover:text-white"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <div class="flex items-center gap-4 mb-4 text-[10px] font-bold text-slate-400 uppercase italic">
+                            <span class="flex items-center gap-1"><i data-lucide="tag" class="w-3 h-3"></i> ${items[0]?.Marca || globalData.marca || 'S/I'}</span>
+                            <span class="flex items-center gap-1"><i data-lucide="file-text" class="w-3 h-3"></i> <a href="${items[0]?.Manual || globalData.manual_link || '#'}" target="_blank" class="text-blue-500 hover:underline">Manual Técnico</a></span>
+                        </div>
+                        <table class="w-full text-left text-[9px]">
+                            <thead class="text-slate-400 font-black uppercase tracking-tighter border-b">
+                                <tr>
+                                    <th class="pb-2">Item</th>
+                                    <th class="pb-2 text-center">Código</th>
+                                    <th class="pb-2 text-center">Medida</th>
+                                    <th class="pb-2 text-center">Crítico</th>
+                                    <th class="pb-2 text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50">
+                                ${items.map((p, idx) => {
+                                    const isCrit = p.Crítico === 'SIM' || p.Crítico === 'Sim' || p.Crítico === 'S' || p.is_critico;
+                                    return `
+                                    <tr class="group">
+                                        <td class="py-2 font-bold text-slate-700 uppercase">
+                                            ${p.item || p.Item}
+                                            <span class="block text-[7px] text-slate-400">${p.tipo || 'Geral'}</span>
+                                        </td>
+                                        <td class="py-2 text-center font-mono text-slate-400">${p.codigo_item || p['Código do Item'] || '-'}</td>
+                                        <td class="py-2 text-center text-slate-400">${p.medida || '-'}</td>
+                                        <td class="py-2 text-center">
+                                            <button onclick="toggleCriticality('${tipo}', '${model}', ${idx})" class="px-2 py-0.5 rounded-full font-black text-[8px] uppercase transition-all ${isCrit ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-400 hover:bg-red-100 hover:text-red-400'}">
+                                                ${isCrit ? 'SIM' : 'NÃO'}
+                                            </button>
+                                        </td>
+                                        <td class="py-2 text-right">
+                                            <div class="flex justify-end gap-1">
+                                                <button onclick='openEditPart("${model}", ${JSON.stringify(p)})' class="p-1 hover:text-blue-600 transition-all opacity-0 group-hover:opacity-100"><i data-lucide="edit-3" class="w-3 h-3"></i></button>
+                                                <button onclick="deleteRecord('pecas_modelo', '${p.id}')" class="p-1 hover:text-red-600 transition-all opacity-0 group-hover:opacity-100"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>`;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                        <button onclick="openModal('peca', { model: '${model}' })" class="w-full mt-4 border-2 border-dashed border-slate-200 p-2 rounded-xl text-[9px] font-black text-slate-400 uppercase hover:border-blue-400 hover:text-blue-500 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="plus" class="w-3 h-3"></i> Adicionar Peça ao Modelo
+                        </button>
+                    </div>
+                </div>`;
+            }).join('') || '<div class="col-span-full p-20 text-center text-slate-400 italic">Nenhum modelo cadastrado no catálogo.</div>';
+            lucide.createIcons();
+        }
+
+        async function toggleCriticality(tipo, model, idx) {
+            const peça = db[tipo][model][idx];
+            const novoEstado = (peça.Crítico === 'SIM' || peça.is_critico) ? false : true;
+            
+            try {
+                // 1. Buscar o ID do modelo primeiro
+                const { data: modelo } = await supabaseClient.from('modelos_equipamento').select('id').eq('modelo_chave', model).single();
+                
+                // 2. Atualizar no Banco
+                const { error } = await supabaseClient
+                    .from('pecas_modelo')
+                    .update({ is_critico: novoEstado })
+                    .eq('modelo_id', modelo.id)
+                    .eq('item', peça.item || peça.Item);
+
+                if (error) throw error;
+
+                // 3. Atualizar local e interface
+                peça.Crítico = novoEstado ? 'SIM' : 'NÃO';
+                peça.is_critico = novoEstado;
+                renderCatalogList(tipo);
+                alert(`Criticidade atualizada para todo o contrato!`);
+            } catch (e) {
+                console.error(e);
+                alert("Erro ao atualizar criticidade no Supabase.");
+            }
+        }
+        let currentAddContext = {};
+
+        function openModal(type, context = {}) {
+            const modal = document.getElementById('modal-add-modelo');
+            const title = document.querySelector('#modal-add-modelo h3');
+            const content = document.getElementById('modal-body-content');
+            currentAddContext = { type, ...context };
+
+            modal.classList.remove('hidden');
+            
+            if (type === 'modelo') {
+                const isPainel = context.catalogType === 'bib_pai' || context.tipo === 'painel';
+                title.innerText = context.id ? "Editar Modelo do Catálogo" : "Novo Modelo de Equipamento";
+                content.innerHTML = `
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <label class="label-min">Tipo de Equipamento</label>
+                            <select id="m-type" class="input-std">
+                                <option value="esteira" ${!isPainel ? 'selected' : ''}>Esteira de Bagagem</option>
+                                <option value="painel" ${isPainel ? 'selected' : ''}>Painel Elétrico/Controle</option>
+                            </select>
+                        </div>
+                        <div><label class="label-min">ID Modelo (Único)</label><input type="text" id="m-id" class="input-std" placeholder="EST-PADRAO-01" value="${context.modelo_chave || ''}"></div>
+                        <div><label class="label-min">Marca/Fabricante</label><input type="text" id="m-brand" class="input-std" placeholder="Interroll" value="${context.marca || ''}"></div>
+                    </div>
+                    <div><label class="label-min">Link do Manual (PDF)</label><input type="text" id="m-manual" class="input-std" placeholder="https://..." value="${context.manual_link || ''}"></div>
+                    <div class="border-t pt-4 mt-4">
+                        <p class="text-[10px] font-black text-slate-400 uppercase mb-4 italic text-center">--- Vínculo Direto (Opcional) ---</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="label-min">Unidade de Destino</label>
+                                <select id="m-sigla" class="input-std">
+                                    <option value="">-- Nenhum vínculo (Global) --</option>
+                                    ${db.unidades.sort((a,b) => a.Sigla.localeCompare(b.Sigla)).map(u => `<option value="${u.Sigla}" ${u.Sigla === context.sigla ? 'selected' : ''}>${u.Sigla} - ${u.Unidade}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div><label class="label-min">TAG da Unidade</label><input type="text" id="m-tag" class="input-std" placeholder="EST-01" value="${context.tag || ''}"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div><label class="label-min">Nº de Módulos</label><input type="number" id="m-qty" class="input-std" value="${context.qtd_modulos || 1}" oninput="updateModuleInputs(this.value, 'm-len-container', 'm')"></div>
+                            <div><label class="label-min">Info Extra</label><input type="text" id="m-info" class="input-std" placeholder="Curva" value="${context.info_adicional || ''}"></div>
+                        </div>
+                        <div id="m-len-container"></div>
+                    </div>
+                `;
+                // Inicializa campo de comprimento com valores existentes se houver
+                setTimeout(() => {
+                    updateModuleInputs(context.qtd_modulos || 1, 'm-len-container', 'm');
+                    if(context.lista_comprimentos) {
+                        context.lista_comprimentos.forEach((l, i) => {
+                            const inp = document.getElementById(`m-len-${i+1}`);
+                            if(inp) inp.value = l;
+                        });
+                    }
+                }, 50);
+            } else if (type === 'peca') {
+                title.innerText = context.id ? `Editar Peça: ${context.item || context.Item}` : `Nova Peça para ${context.model}`;
+                content.innerHTML = `
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">Nome do Item</label><input type="text" id="p-name" class="input-std" placeholder="Rolamento" value="${context.item || context.Item || ''}"></div>
+                        <div><label class="label-min">Código/Part#</label><input type="text" id="p-code" class="input-std" placeholder="6205-ZZ" value="${context.codigo_item || context['Código do Item'] || ''}"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">Medida</label><input type="text" id="p-measure" class="input-std" placeholder="25x52x15" value="${context.medida || ''}"></div>
+                        <div>
+                            <label class="label-min">Tipo</label>
+                            <select id="p-type" class="input-std">
+                                ${['Mecânico','Elétrico','Eletrônico','Eletromecânico','Civil','Hidráulico','Outros'].map(o => `<option ${context.tipo === o ? 'selected' : ''}>${o}</option>`).join('')}
+                            </select>
+                        </div>
+                    </div>
+                    <div><label class="label-min">Descrição / Notas (Opcional)</label><textarea id="p-desc" class="input-std h-20" placeholder="Ex: Utilizado na tração principal...">${context.descricao || ''}</textarea></div>
+                    <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                        <input type="checkbox" id="p-crit" class="w-4 h-4" ${context.is_critico || context.Crítico === 'SIM' ? 'checked' : ''}>
+                        <label for="p-crit" class="text-xs font-black text-red-700 uppercase">Marcar como Item Crítico</label>
+                    </div>
+                `;
+            } else if (type === 'tecnico') {
+                title.innerText = context.id ? `Editar Técnico: ${context.nome}` : "Cadastrar Novo Técnico";
+                content.innerHTML = `
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">Nome Completo</label><input type="text" id="t-nome" class="input-std" placeholder="João Silva" value="${context.nome || ''}"></div>
+                        <div><label class="label-min">Cargo</label><input type="text" id="t-cargo" class="input-std" placeholder="Mecânico I" value="${context.cargo || ''}"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">CPF (Opcional)</label><input type="text" id="t-cpf" class="input-std" placeholder="000.000.000-00" value="${context.cpf || ''}"></div>
+                        <div><label class="label-min">Telefone</label><input type="text" id="t-phone" class="input-std" placeholder="(11) 9...." value="${context.telefone || ''}"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">Escala</label><input type="text" id="t-escala" class="input-std" placeholder="5x2, 6x1..." value="${context.escala || ''}"></div>
+                        <div><label class="label-min">Horário</label><input type="text" id="t-horario" class="input-std" placeholder="08:00 - 17:00" value="${context.horario || ''}"></div>
+                    </div>
+                    ${context.id ? '' : `
+                        <div>
+                            <label class="label-min">Unidade de Alocação</label>
+                            <select id="t-sigla" class="input-std">
+                                ${db.unidades.sort((a,b) => a.Sigla.localeCompare(b.Sigla)).map(u => `<option value="${u.Sigla}" ${u.Sigla === context.sigla ? 'selected' : ''}>${u.Sigla} - ${u.Unidade}</option>`).join('')}
+                            </select>
+                        </div>`}
+                `;
+            } else if (type === 'instalar' || type === 'instalar_painel') {
+                const isPainel = type === 'instalar_painel';
+                title.innerText = context.id ? "Editar Instalação" : `Instalar ${isPainel ? 'Painel' : 'Esteira'} em ${context.sigla}`;
+                const bibKey = isPainel ? 'bib_pai' : 'bib_est';
+                const options = Object.keys(db[bibKey]).map(m => `<option ${m === (context.Modelo_Chave || context.Modelo_Painel) ? 'selected' : ''}>${m}</option>`).join('');
+                
+                content.innerHTML = `
+                    <div><label class="label-min">Selecionar Modelo do Catálogo</label><select id="i-model" class="input-std">${options}</select></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="label-min">TAG da Unidade</label><input type="text" id="i-tag" class="input-std" placeholder="${isPainel ? 'PNL-01' : 'EST-01'}" value="${context.TAG || context.TAG_Painel || ''}"></div>
+                        ${isPainel ? 
+                            `<div><label class="label-min">Localização</label><input type="text" id="i-loc" class="input-std" placeholder="Setor A" value="${context.Localizacao || ''}"></div>` :
+                            `<div><label class="label-min">Quantidade de Módulos</label><input type="number" id="i-qty" class="input-std" value="${context.Qtd_Modulos || 1}" oninput="updateModuleInputs(this.value, 'i-len-container', 'i')"></div>`
+                        }
+                    </div>
+                    ${isPainel ? '' : '<div id="i-len-container"></div>'}
+                    <div><label class="label-min">Info Adicional</label><input type="text" id="i-info" class="input-std" placeholder="Detalhes técnicos..." value="${context.Info || ''}"></div>
+                `;
+                if (!isPainel) {
+                    setTimeout(() => {
+                        updateModuleInputs(context.Qtd_Modulos || 1, 'i-len-container', 'i');
+                        if(context.Lista_Comprimentos) {
+                            context.Lista_Comprimentos.forEach((l, i) => {
+                                const inp = document.getElementById(`i-len-${i+1}`);
+                                if(inp) inp.value = l;
+                            });
+                        }
+                    }, 50);
+                }
+            }
+            lucide.createIcons();
+        }
+
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function updateModuleInputs(qty, containerId, prefix) {
+            const container = document.getElementById(containerId);
+            const n = parseInt(qty) || 1;
+            let html = `<p class="text-[8px] font-black text-blue-400 uppercase mt-2 mb-1 italic">Tamanho de cada Módulo (m)</p>
+                        <div class="grid grid-cols-4 gap-2">`;
+            for (let i = 1; i <= n; i++) {
+                html += `<div><label class="text-[7px] font-bold text-slate-400 uppercase">M${i}</label><input type="number" step="0.1" id="${prefix}-len-${i}" class="w-full bg-slate-100 border-none rounded-lg p-1.5 text-[10px] outline-none ring-blue-500 focus:ring-1" value="0"></div>`;
+            }
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        async function saveNewModel() {
+            const { type, id: recordId } = currentAddContext;
+
+            try {
+                if (type === 'modelo') {
+                    const id = document.getElementById('m-id').value;
+                    const brand = document.getElementById('m-brand').value;
+                    const manual = document.getElementById('m-manual').value;
+                    const mtype = document.getElementById('m-type').value;
+                    
+                    const sigla = document.getElementById('m-sigla').value;
+                    const tag = document.getElementById('m-tag').value;
+                    const qty = parseInt(document.getElementById('m-qty').value);
+                    const info = document.getElementById('m-info').value;
+
+                    let lens = [];
+                    for(let i=1; i<=qty; i++) {
+                        const inp = document.getElementById(`m-len-${i}`);
+                        if (inp) lens.push(parseFloat(inp.value) || 0);
+                    }
+
+                    if(!id) return alert("Preencha o modelo!");
+                    
+                    const payload = { modelo_chave: id, marca: brand, tipo: mtype, manual_link: manual };
+                    let currentModeloId = recordId;
+
+                    if (recordId) {
+                        const { error } = await supabaseClient.from('modelos_equipamento').update(payload).eq('id', recordId);
+                        if (error) throw error;
+                    } else {
+                        const { data: modeloRes, error: errMod } = await supabaseClient.from('modelos_equipamento').upsert(payload, { onConflict: 'modelo_chave' }).select();
+                        if (errMod) throw errMod;
+                        currentModeloId = modeloRes[0].id;
+                    }
+
+                    if (sigla && tag) {
+                        const ativoPayload = { sigla_unidade: sigla, tag: tag, modelo_id: currentModeloId, qtd_modulos: qty, lista_comprimentos: lens, info_adicional: info };
+                        const { error: errAtivo } = await supabaseClient.from('ativos_unidade').upsert(ativoPayload, { onConflict: 'tag, sigla_unidade' });
+                        if (errAtivo) throw errAtivo;
+                    }
+                } 
+                else if (type === 'peca') {
+                    const { model } = currentAddContext;
+                    const payload = {
+                        item: document.getElementById('p-name').value,
+                        codigo_item: document.getElementById('p-code').value,
+                        medida: document.getElementById('p-measure').value,
+                        tipo: document.getElementById('p-type').value,
+                        descricao: document.getElementById('p-desc').value,
+                        is_critico: document.getElementById('p-crit').checked
+                    };
+
+                    if (recordId) {
+                        const { error } = await supabaseClient.from('pecas_modelo').update(payload).eq('id', recordId);
+                        if (error) throw error;
+                    } else {
+                        const { data: modelo } = await supabaseClient.from('modelos_equipamento').select('id').eq('modelo_chave', model).single();
+                        payload.modelo_id = modelo.id;
+                        const { error } = await supabaseClient.from('pecas_modelo').insert(payload);
+                        if (error) throw error;
+                    }
+                }
+                else if (type === 'tecnico') {
+                    const { sigla } = currentAddContext;
+                    const payload = {
+                        sigla_unidade: sigla || document.getElementById('t-sigla')?.value,
+                        nome: document.getElementById('t-nome').value,
+                        cargo: document.getElementById('t-cargo').value,
+                        cpf: document.getElementById('t-cpf').value,
+                        telefone: document.getElementById('t-phone').value,
+                        escala: document.getElementById('t-escala').value,
+                        horario: document.getElementById('t-horario').value
+                    };
+                    
+                    if (recordId) {
+                        const { error } = await supabaseClient.from('tecnicos').update(payload).eq('id', recordId);
+                        if (error) throw error;
+                    } else {
+                        const { error } = await supabaseClient.from('tecnicos').insert(payload);
+                        if (error) throw error;
+                    }
+                }
+                else if (type === 'instalar' || type === 'instalar_painel') {
+                    const { sigla } = currentAddContext;
+                    const isPainel = type === 'instalar_painel';
+                    const model = document.getElementById('i-model').value;
+                    const tag = document.getElementById('i-tag').value;
+                    const info = document.getElementById('i-info').value;
+ 
+                    let lens = [];
+                    let qty = 0;
+                    let loc = null;
+
+                    if (!isPainel) {
+                        qty = parseInt(document.getElementById('i-qty').value);
+                        for(let i=1; i<=qty; i++) {
+                            const inp = document.getElementById(`i-len-${i}`);
+                            if (inp) lens.push(parseFloat(inp.value) || 0);
+                        }
+                    } else {
+                        loc = document.getElementById('i-loc').value;
+                    }
+ 
+                    const { data: modelo } = await supabaseClient.from('modelos_equipamento').select('id').eq('modelo_chave', model).single();
+                    const ativoPayload = { 
+                        sigla_unidade: sigla, 
+                        tag: tag, 
+                        modelo_id: modelo.id, 
+                        qtd_modulos: isPainel ? null : qty, 
+                        lista_comprimentos: isPainel ? null : lens, 
+                        info_adicional: info,
+                        localizacao: isPainel ? loc : null
+                    };
+                    
+                    if (recordId) {
+                        const { error } = await supabaseClient.from('ativos_unidade').update(ativoPayload).eq('id', recordId);
+                        if (error) throw error;
+                    } else {
+                        const { error } = await supabaseClient.from('ativos_unidade').insert(ativoPayload);
+                        if (error) throw error;
+                    }
+                }
+
+                alert("Salvo com sucesso!");
+                closeModal('modal-add-modelo');
+                init(); // Recarrega dados
+            } catch (e) {
+                console.error(e);
+                alert("Erro ao salvar dados no Supabase.");
+            }
+        }
+
+        async function deleteRecord(table, id) {
+            if (!confirm("Tem certeza que deseja excluir permanentemente este registro?")) return;
+            try {
+                const { error } = await supabaseClient.from(table).delete().eq('id', id);
+                if (error) throw error;
+                alert("Excluído com sucesso!");
+                init();
+            } catch (e) { console.error(e); alert("Erro ao excluir."); }
+        }
+
+        function openEditModel(jsonStr) {
+            const data = JSON.parse(decodeURIComponent(jsonStr));
+            openModal('modelo', data);
+        }
+
+        function openEditAsset(jsonStr) {
+            const data = JSON.parse(decodeURIComponent(jsonStr));
+            openModal('instalar', data);
+        }
+
+        function openEditPart(model, partData) {
+            openModal('peca', { ...partData, model: model });
+        }
+
+        function exportDB() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "dados_atualizados.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            alert("JSON exportado! Substitua o arquivo 'dados.json' na pasta do projeto para salvar permanentemente.");
+        }
 
         function showTab(id, btn) {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active', 'bg-[#FFF159]', 'text-[#2D3277]'); b.classList.add('bg-[#2D3277]', 'text-white'); });
+            document.querySelectorAll('.tab-btn').forEach(b => { 
+                b.classList.remove('active', 'bg-[#FFF159]', 'text-[#2D3277]'); 
+                b.classList.add('bg-[#2D3277]', 'text-white'); 
+            });
             btn.classList.add('active');
+            btn.classList.remove('bg-[#2D3277]', 'text-white');
+            btn.classList.add('bg-[#FFF159]', 'text-[#2D3277]');
+        }
+
+        async function showTechnicians() {
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('catalog-view').classList.add('hidden');
+            document.getElementById('technicians-view').classList.remove('hidden');
+            renderTechniciansList();
+        }
+
+        async function renderTechniciansList() {
+            const container = document.getElementById('technicians-grid');
+            const search = document.getElementById('tech-search').value.toLowerCase();
+            
+            const { data: techs, error } = await supabaseClient.from('tecnicos').select('*');
+            if (error) return console.error(error);
+
+            const filtered = techs.filter(t => 
+                (t.nome || '').toLowerCase().includes(search) || 
+                (t.cargo || '').toLowerCase().includes(search) || 
+                (t.sigla_unidade || '').toLowerCase().includes(search)
+            );
+
+            container.innerHTML = filtered.map(t => `
+                <div class="bg-white p-6 rounded-3xl border shadow-sm hover:shadow-md transition-all group relative">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-blue-100 text-blue-900 p-4 rounded-2xl">
+                            <i data-lucide="user" class="w-8 h-8"></i>
+                        </div>
+                        <div class="text-right">
+                             <span class="text-[9px] font-black bg-blue-50 text-blue-600 px-2 py-1 rounded uppercase tracking-tighter">${t.sigla_unidade}</span>
+                             <p class="text-[8px] font-black text-slate-300 mt-1 uppercase italic">${t.cargo || 'Técnico'}</p>
+                        </div>
+                    </div>
+                    <h3 class="font-black text-xl text-slate-800 uppercase italic mb-1">${t.nome}</h3>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tight mb-4 border-b pb-4 border-slate-50">CPF: ${t.cpf || '---'} | TEL: ${t.telefone || '---'}</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                         <div class="bg-slate-50 p-3 rounded-2xl">
+                             <p class="text-[7px] font-black text-slate-400 uppercase mb-1">Escala</p>
+                             <p class="text-[10px] font-black text-slate-700 italic">${t.escala || '---'}</p>
+                         </div>
+                         <div class="bg-slate-50 p-3 rounded-2xl">
+                             <p class="text-[7px] font-black text-slate-400 uppercase mb-1">Horário</p>
+                             <p class="text-[10px] font-black text-slate-700 italic">${t.horario || '---'}</p>
+                         </div>
+                    </div>
+
+                    <div class="absolute top-4 right-12 opacity-0 group-hover:opacity-100 transition-all flex gap-2">
+                        <button onclick='openModal("tecnico", ${JSON.stringify(t)})' class="p-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-blue-500 hover:text-white transition-all shadow-sm">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="deleteRecord('tecnicos', '${t.id}')" class="p-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('') || '<div class="col-span-full text-center p-20 text-slate-400 italic">Nenhum técnico encontrado com estes critérios.</div>';
+            
+            lucide.createIcons();
         }
 
         function filterUnits() {
@@ -220,13 +1055,91 @@
 
         function renderSidebarLinks() {
             const container = document.getElementById('sidebar-links');
-            container.innerHTML = db.links.map(l => `<a href="${l.Link}" target="_blank" class="block p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-[#FFF159] hover:text-[#2D3277] transition-all group italic"><p class="text-[10px] font-black uppercase tracking-tighter">${l.Título}</p><p class="text-[9px] opacity-40 group-hover:opacity-100 mt-0.5 leading-tight">${l.Texto}</p></a>`).join('');
+            // Mapeia titulo -> Título, texto -> Texto, url -> Link (ajuste conforme SUPABASE_SETUP.sql)
+            container.innerHTML = db.links.map(l => `<a href="${l.url}" target="_blank" class="block p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-[#FFF159] hover:text-[#2D3277] transition-all group italic"><p class="text-[10px] font-black uppercase tracking-tighter">${l.titulo}</p><p class="text-[9px] opacity-40 group-hover:opacity-100 mt-0.5 leading-tight">${l.texto}</p></a>`).join('');
         }
 
         function renderGaiolasHome() {
             const container = document.getElementById('gaiolas-global-body');
-            container.innerHTML = db.gaiolas_global.map(g => `<tr class="hover:bg-slate-50 italic"><td class="p-4 text-slate-400 font-mono text-[10px]">${g['Carimbo de data/hora']}</td><td class="p-4 font-black text-blue-900 uppercase">${g['Qual sua unidade']}</td><td class="p-4 font-bold text-slate-600 uppercase">${g['Qual seu nome']}</td><td class="p-4 text-center"><span class="px-3 py-1 rounded-full font-black ${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)'] > 10 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700'}">${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)']}</span></td></tr>`).join('');
+            container.innerHTML = db.gaiolas_global.map(g => `
+                <tr class="hover:bg-slate-50 italic">
+                    <td class="p-4 text-slate-400 font-mono text-[10px]">${g['Carimbo de data/hora'] || 'S/I'}</td>
+                    <td class="p-4 font-black text-blue-900 uppercase">${g.SIGLA || 'S/I'}</td>
+                    <td class="p-4 font-bold text-slate-600 uppercase">${g['Qual seu nome'] || 'S/I'}</td>
+                    <td class="p-4 text-center">
+                        <span class="px-3 py-1 rounded-full font-black ${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)'] > 10 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700'}">
+                            ${g['Quantas Gaiolas temos pendente na unidade hoje ? (Número)'] || 0}
+                        </span>
+                    </td>
+                </tr>`).join('');
         }
+
+        function openImportModal() {
+            document.getElementById('import-data').value = '';
+            document.getElementById('import-preview').classList.add('hidden');
+            document.getElementById('modal-import').classList.remove('hidden');
+        }
+
+        async function processBulkImport() {
+            const rawData = document.getElementById('import-data').value.trim();
+            if (!rawData) return alert("Cole os dados da planilha primeiro!");
+
+            const preview = document.getElementById('import-preview');
+            preview.classList.remove('hidden');
+            preview.innerText = "🔍 Analisando e validando dados...";
+            preview.className = "text-[10px] font-bold py-2 px-4 bg-yellow-50 text-yellow-800 rounded-lg";
+
+            const lines = rawData.split('\n');
+            let successCount = 0;
+            let errorCount = 0;
+
+            // Mapear catálogo local para busca rápida por chave
+            const catalogMap = {};
+            const { data: models } = await supabaseClient.from('modelos_equipamento').select('id, modelo_chave');
+            if (models) models.forEach(m => catalogMap[m.modelo_chave] = m.id);
+
+            for(const line of lines) {
+                const cols = line.split('\t').map(c => c.trim()); // TSV (Tabs da planilha)
+                if (cols.length < 3) continue;
+
+                const [sigla, tag, modelKey, modules, lengths, location, info] = cols;
+                const mId = catalogMap[modelKey];
+
+                if (!mId) {
+                    console.warn(`Modelo ${modelKey} não encontrado no catálogo.`);
+                    errorCount++;
+                    continue;
+                }
+
+                try {
+                    const payload = {
+                        sigla_unidade: sigla,
+                        tag: tag,
+                        modelo_id: mId,
+                        qtd_modulos: parseInt(modules) || null,
+                        lista_comprimentos: lengths ? lengths.split(',').map(n => parseFloat(n.trim())) : null,
+                        localizacao: location || null,
+                        info_adicional: info || null
+                    };
+
+                    const { error } = await supabaseClient.from('ativos_unidade').upsert(payload, { onConflict: 'tag, sigla_unidade' });
+                    if (error) throw error;
+                    successCount++;
+                } catch (e) {
+                    console.error("Erro na linha:", line, e);
+                    errorCount++;
+                }
+            }
+
+            preview.innerText = `✅ Importação concluída! Sucesso: ${successCount} | Falhas: ${errorCount}`;
+            preview.className = "text-[10px] font-bold py-2 px-4 bg-green-50 text-green-800 rounded-lg";
+            
+            setTimeout(() => {
+                alert(`Importação Finalizada!\n\n${successCount} itens processados com sucesso.\n${errorCount} falhas.`);
+                init(); // Recarrega visões
+            }, 500);
+        }
+
         init();
     </script>
 </body>

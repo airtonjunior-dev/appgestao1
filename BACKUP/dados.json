@@ -13,306 +13,381 @@
   ],
   "gaiolas_global": [
     {
-      "Carimbo de data/hora": "24/02/2026 17:52",
-      "Qual seu nome": "Airton",
-      "Seu CPF sem pontos ou traços": 3171126001,
+      "Carimbo de data/hora": "03/03/2026 15:43",
+      "Qual seu nome": "Rafael da Silveira fungari",
+      "Seu CPF sem pontos ou traços": 9726058945,
+      "SIGLA": "SPR2",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 18
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 15:45",
+      "Qual seu nome": "Daniel Pieri",
+      "Seu CPF sem pontos ou traços": 4774856932,
       "SIGLA": "SPR1",
-      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 10
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 0
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 15:46",
+      "Qual seu nome": "Paulo Giovani Duarte Pires da Cunha",
+      "Seu CPF sem pontos ou traços": 6927768939,
+      "SIGLA": "SPR4",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 2
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 15:50",
+      "Qual seu nome": "José Loriel da Rocha",
+      "Seu CPF sem pontos ou traços": 6135995944,
+      "SIGLA": "SPR5",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 2
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 16:50",
+      "Qual seu nome": "Helinton silva de castro",
+      "Seu CPF sem pontos ou traços": 4016272920,
+      "SIGLA": "SRS7",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 3
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 16:51",
+      "Qual seu nome": "Henrique Xavier",
+      "Seu CPF sem pontos ou traços": 4235815032,
+      "SIGLA": "SRS2",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 6
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 17:03",
+      "Qual seu nome": "Cristiano Mendes Dias",
+      "Seu CPF sem pontos ou traços": 20099,
+      "SIGLA": "SRS8",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 0
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 17:20",
+      "Qual seu nome": "Wagner Roveda",
+      "Seu CPF sem pontos ou traços": 83437703072,
+      "SIGLA": "RS01",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 70
+    },
+    {
+      "Carimbo de data/hora": "03/03/2026 21:46",
+      "Qual seu nome": "Nicolas Lyon",
+      "Seu CPF sem pontos ou traços": 48276881840,
+      "SIGLA": "SPR6",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 51
+    },
+    {
+      "Carimbo de data/hora": "04/03/2026 05:55",
+      "Qual seu nome": "Felipe villatore werner",
+      "Seu CPF sem pontos ou traços": "073.010.549-04",
+      "SIGLA": "SPR8",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 60
+    },
+    {
+      "Carimbo de data/hora": "04/03/2026 06:58",
+      "Qual seu nome": "Samuel Vinicius Kulmann Bacchi",
+      "Seu CPF sem pontos ou traços": 992556007,
+      "SIGLA": "SRS4",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": "7 pendências, sendo 3 gaiolas e 4 carrinhos para sacarias."
+    },
+    {
+      "Carimbo de data/hora": "04/03/2026 08:39",
+      "Qual seu nome": "Jeferson Eurides Hortencio",
+      "Seu CPF sem pontos ou traços": "441.317.470-49",
+      "SIGLA": "SRS5",
+      "Quantas Gaiolas temos pendente na unidade hoje ? (Número)": 4
     }
   ],
   "bib_est": {
-    "ESTEIRA INSTALL PADRAO": [],
-    "NUCLEOTECH_STD": [],
     "INSTALL-IJUI": [
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Lona Modulo 1",
-        "Codigo": "xxxx",
-        "Referencia": "lona PVC",
+        "Código do Item": "xxxx",
+        "Referência": "lona PVC",
         "Tamanho": "L:1160MM COMP:25545MM FECHADA",
-        "Critico": "Sim"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Lona Modulo 2",
-        "Codigo": "xxxx",
-        "Referencia": "lona PVC",
+        "Código do Item": "xxxx",
+        "Referência": "lona PVC",
         "Tamanho": "L:1160MM COMP:25545MM FECHADA",
-        "Critico": "Sim"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Lona Modulo 3",
-        "Codigo": "xxxx",
-        "Referencia": "lona PVC",
+        "Código do Item": "xxxx",
+        "Referência": "lona PVC",
         "Tamanho": "L:1160MM COMP:25545MM FECHADA",
-        "Critico": "Sim"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Lona Modulo 4",
-        "Codigo": "xxxx",
-        "Referencia": "lona PVC",
+        "Código do Item": "xxxx",
+        "Referência": "lona PVC",
         "Tamanho": "L:1160MM COMP:25545MM FECHADA",
-        "Critico": "Sim"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Eixo Movido",
-        "Codigo": 30703,
-        "Referencia": "S/I",
+        "Código do Item": 30703,
+        "Referência": "S/I",
         "Tamanho": "dimensões: Ø70 x 1185,6mm",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "ANEL ELASTICO PARA FURO 47X1,75MM - DIN 472 - ACO CARBONO",
-        "Codigo": 10197,
-        "Referencia": "Eixo movido",
+        "Código do Item": 10197,
+        "Referência": "Eixo movido",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "ANEL ELASTICO PARA EIXO 20 X 1,2MM - DIN 471 - ACO CARBONO",
-        "Codigo": "S/I",
-        "Referencia": "Eixo movido",
+        "Código do Item": "S/I",
+        "Referência": "Eixo movido",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "NSK",
         "Item": "ROLAMENTO DE ESFERA 6204 DDU CN - ACO CARBONO",
-        "Codigo": 16545,
-        "Referencia": "Eixo movido",
+        "Código do Item": 16545,
+        "Referência": "Eixo movido",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "TUBO ROLE CONICO",
-        "Codigo": 24526,
-        "Referencia": "Eixo movido",
+        "Código do Item": 24526,
+        "Referência": "Eixo movido",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "EIXO ROLE CILI",
-        "Codigo": 17896,
-        "Referencia": "Eixo movido",
+        "Código do Item": 17896,
+        "Referência": "Eixo movido",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "SEW",
         "Item": "MOTOREDUTOR",
-        "Codigo": 16906,
-        "Referencia": "SA57/TDRN100LM4 - 2,2KW - 124RPM - 153NM - M1A/B - EIXO OCO Ø30MM - CAIXA 90/3 - 220/380/440 V - 60HZ",
+        "Código do Item": 16906,
+        "Referência": "SA57/TDRN100LM4 - 2,2KW - 124RPM - 153NM - M1A/B - EIXO OCO Ø30MM - CAIXA 90/3 - 220/380/440 V - 60HZ",
         "Tamanho": "EIXO OCO Ø30MM",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "YONGLIBELT",
         "Item": "ESTEIRA LONA",
-        "Codigo": 31108,
-        "Referencia": "H25-34/0A PRETA 2MM",
+        "Código do Item": 31108,
+        "Referência": "H25-34/0A PRETA 2MM",
         "Tamanho": "L:1160MM COMP:25545MM FECHADA",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "FRM",
         "Item": "MANCAL FL208",
-        "Codigo": 20627,
-        "Referencia": "Mancal",
+        "Código do Item": 20627,
+        "Referência": "Mancal",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "MANCAL FL208 (GYE 40) DOIS FUROS FERRO FUNDIDO - FRM",
-        "Codigo": 19700,
-        "Referencia": "Mancal",
+        "Código do Item": 19700,
+        "Referência": "Mancal",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "SKF",
         "Item": "ROLAMENTO UC 208 (GYE 40) - ACO CARBONO",
-        "Codigo": 5990,
-        "Referencia": "Mancal",
+        "Código do Item": 5990,
+        "Referência": "Mancal",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "PINO GRAXEIRO RETO M6 - GALVANIZADO",
-        "Codigo": "S/I",
-        "Referencia": "Mancal",
+        "Código do Item": "S/I",
+        "Referência": "Mancal",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Eixo de reto",
-        "Codigo": 30702,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 30702,
+        "Referência": "Eixo de reto",
         "Tamanho": "dimensões: Ø70 x 1185,6mm",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "ANEL ELASTICO PARA FURO 47X1,75MM - DIN 472 - ACO CARBONO",
-        "Codigo": 10197,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 10197,
+        "Referência": "Eixo de reto",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "ANEL ELASTICO PARA EIXO 20 X 1,2MM - DIN 471 - ACO CARBONO",
-        "Codigo": 9723,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 9723,
+        "Referência": "Eixo de reto",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "ROLE CILI",
-        "Codigo": 24536,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 24536,
+        "Referência": "Eixo de reto",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "NSK",
         "Item": "ROLAMENTO DE ESFERA 6204 DDU CN - ACO CARBONO",
-        "Codigo": 16545,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 16545,
+        "Referência": "Eixo de reto",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "EIXO ROLE CILI",
-        "Codigo": 17896,
-        "Referencia": "Eixo de reto",
+        "Código do Item": 17896,
+        "Referência": "Eixo de reto",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Rolete de retorno",
-        "Codigo": 19233,
-        "Referencia": "Rolete de retorno",
+        "Código do Item": 19233,
+        "Referência": "Rolete de retorno",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "NSK",
         "Item": "ROLAMENTO DE ESFERA 6201 DDU CN - ACO CARBONO",
-        "Codigo": 16472,
-        "Referencia": "Rolete de retorno",
+        "Código do Item": 16472,
+        "Referência": "Rolete de retorno",
         "Tamanho": "S/I",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "TUBO FABRICAÇÃO INSTALL ",
-        "Codigo": 19231,
-        "Referencia": "Rolete de retorno",
+        "Código do Item": 19231,
+        "Referência": "Rolete de retorno",
         "Tamanho": "(dimensões: Ø50,8 x 1195mm)",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "EIXO FABRICAÇÃO INSTALL ",
-        "Codigo": 19232,
-        "Referencia": "Rolete de retorno",
+        "Código do Item": 19232,
+        "Referência": "Rolete de retorno",
         "Tamanho": "(dimensões: Ø12 x 1195mm)",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "Install",
         "Item": "Eixo de tração",
-        "Codigo": 32791,
-        "Referencia": "Eixo de tração",
+        "Código do Item": 32791,
+        "Referência": "Eixo de tração",
         "Tamanho": "dimensões: Ø111,6 x 1473,6mm",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "Chapa de transferência",
-        "Codigo": 24658,
-        "Referencia": "Chapa de transferência",
+        "Código do Item": 24658,
+        "Referência": "Chapa de transferência",
         "Tamanho": "dimensões: 50 x 102 x 1194mm",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       },
       {
         "SIGLA": "SRS7",
         "Modelo_Chave": "INSTALL-IJUI",
         "Marca": "na",
         "Item": "Trilho flow rack",
-        "Codigo": 18385,
-        "Referencia": "Flow Rack",
+        "Código do Item": 18385,
+        "Referência": "Flow Rack",
         "Tamanho": "dimensões: 35 x 41 x 1980mm",
-        "Critico": "S/I"
+        "Crítico": "Sim"
       }
     ]
   },
@@ -413,7 +488,7 @@
       "Sigla": "SPR1",
       "Unidade": "Curitiba",
       "Regional": "RSSC",
-      "Analista": "Daniel",
+      "Analista": "Daniel Specht",
       "Supervisor": "Jonas",
       "Endereco": "Rodovia Federal BR 277, KM 584, Lote 391-C-13A, Cascavel/PR - Maps",
       "esteiras": [
@@ -448,7 +523,7 @@
       "Sigla": "SSC4",
       "Unidade": "Chapecó",
       "Regional": "RSSC",
-      "Analista": "Daniel",
+      "Analista": "Daniel Specht",
       "Supervisor": "Jonas",
       "Endereco": "BR-158 - Vila Esperança, São Bráz - Pato Branco/PR\nCondomínio Carba Logística Galpão 1, CEP: 85503-301 - Maps",
       "esteiras": [
@@ -490,7 +565,7 @@
       "Sigla": "SPR2",
       "Unidade": "Londrina",
       "Regional": "PRSC",
-      "Analista": "Mayara",
+      "Analista": "Mayara Mota",
       "Supervisor": "Jonas",
       "Endereco": " Avenida Tiradentes, N° 7100, Bairro: Jardim Rosicler, Londrina - PR,  - CEP: 86.072-000",
       "esteiras": [],
@@ -517,7 +592,7 @@
       "Sigla": "SRS9",
       "Unidade": "Nova Santa Rita",
       "Regional": "RSSC",
-      "Analista": "Fabo",
+      "Analista": "Fabio Linhares",
       "Supervisor": "Jonas",
       "Endereco": "BR-277, KM348 - Jardim das Americas, Guarapuava/PR, CEP: 85030-230 - Maps",
       "esteiras": [
@@ -573,7 +648,7 @@
       "Sigla": "SPR6",
       "Unidade": "Maringa",
       "Regional": "PRSC",
-      "Analista": "Mayara",
+      "Analista": "Mayara Mota",
       "Supervisor": "Jonas",
       "Endereco": "CD Mercado Livre - BR 376 - Nº 13595 GL Ribeirão, Av. Colombo, Maringá - PR, 87070-610",
       "esteiras": [],
@@ -600,7 +675,7 @@
       "Sigla": "SPR7",
       "Unidade": "Ponta Grossa",
       "Regional": "PRSC",
-      "Analista": "Mayara",
+      "Analista": "Mayara Mota",
       "Supervisor": "Jonas",
       "Endereco": "BR-376, 36000 - Colonia Dona Luiza, Ponta Grossa - PR, CEP: 84043-450 - Condomínio Industrial e Logístico Interalli Realty - Maps",
       "esteiras": [],
@@ -620,7 +695,7 @@
       "Sigla": "SPR1",
       "Unidade": "Curitiba",
       "Regional": "PRSC",
-      "Analista": "Wilson",
+      "Analista": "Wilson Eliar",
       "Supervisor": "Jonas",
       "Endereco": "Rua São Bento, 2143, Vila Hauer, Curitiba/PR - CEP 81630-230 - Maps",
       "esteiras": [
@@ -655,7 +730,7 @@
       "Sigla": "SPR8",
       "Unidade": "Campina Grande do Sul",
       "Regional": "PRSC",
-      "Analista": "Wilson",
+      "Analista": "Wilson Eliar",
       "Supervisor": "Jonas",
       "Endereco": "BR-116, 1500, Campina Grande do Sul - PR, 83430-000 - Mega Centro Logistico  - Maps",
       "esteiras": [],
@@ -687,9 +762,9 @@
     },
     {
       "Sigla": "SRS5",
-      "Unidade": "Passo Fundo (após moving)",
+      "Unidade": "Passo Fundo",
       "Regional": "RSSC",
-      "Analista": "Fernando",
+      "Analista": "Ferando Beckemkamp",
       "Supervisor": "John",
       "Endereco": "Rua Alôncio de Camargo, 1000 - Integração, Passo Fundo/RS, CEP: 99032-040 - Maps",
       "esteiras": [],
@@ -716,7 +791,7 @@
       "Sigla": "SRS8",
       "Unidade": "Sapucaia do Sul",
       "Regional": "RSSC",
-      "Analista": "Fabio",
+      "Analista": "Fabio Linhares",
       "Supervisor": "John",
       "Endereco": "Av. Borges de Medeiros, 1771 - Colonial, Sapucaia do Sul - RS, 93212-110 - Ecoparque Lourenço E Souza - BLOCO D - Acesso 2",
       "esteiras": [],
@@ -748,9 +823,9 @@
     },
     {
       "Sigla": "RS01",
-      "Unidade": "METRO FULL Sapucaia do Sul",
+      "Unidade": "METROFULL",
       "Regional": "RSSC",
-      "Analista": "Fabio",
+      "Analista": "Fabio Linhares",
       "Supervisor": "John",
       "Endereco": "Av. Borges de Medeiros, 1771 - Colonial, Sapucaia do Sul - RS, 93212-110 - Ecoparque Lourenço E Souza - BLOCO F - Portão Acesso 6",
       "esteiras": [],
@@ -770,7 +845,7 @@
       "Sigla": "SRS2",
       "Unidade": "Pelotas",
       "Regional": "RSSC",
-      "Analista": "Ferando",
+      "Analista": "Ferando Beckemkamp",
       "Supervisor": "John",
       "Endereco": "Avenida Presidente João Belchior Marques Goulart, 8.831  CEP: 96050-500 - Maps",
       "esteiras": [],
@@ -788,7 +863,7 @@
     },
     {
       "Sigla": "SRS3",
-      "Unidade": "Santa Maria (após moving)",
+      "Unidade": "Santa Maria",
       "Regional": "RSSC",
       "Analista": "Fenando",
       "Supervisor": "John",
@@ -810,7 +885,7 @@
       "Sigla": "SRS7",
       "Unidade": "Ijuí",
       "Regional": "RSSC",
-      "Analista": "Fernando",
+      "Analista": "Ferando Beckemkamp",
       "Supervisor": "John",
       "Endereco": "RS-522 n° 280 - Rua Augusto Pestana, Ijuí/RS, CEP: 98700-000 - Maps",
       "esteiras": [
@@ -927,9 +1002,9 @@
     },
     {
       "Sigla": "SRS10",
-      "Unidade": "Estrela (Lajeado)",
+      "Unidade": "Estrela",
       "Regional": "RSSC",
-      "Analista": "Fernando",
+      "Analista": "Ferando Beckemkamp",
       "Supervisor": "John",
       "Endereco": "Endereço: BR 386, KM 356, Servidão de Passagem, nº 425 Santa Rita - Estrela/RS, CEP: 95880-000 - Maps",
       "esteiras": [],
@@ -949,7 +1024,7 @@
       "Sigla": "SRS1",
       "Unidade": "Porto Alegre",
       "Regional": "RSSC",
-      "Analista": "Flavio",
+      "Analista": "Flavio Brum",
       "Supervisor": "John",
       "Endereco": "Rua da Várzea, 481, Jardim São Pedro, CEP: 91040-600, Porto Alegre/RS - Maps",
       "esteiras": [
@@ -996,9 +1071,9 @@
     },
     {
       "Sigla": "SRS4",
-      "Unidade": "Caxias Novo\nFlores da Cunha (apos moving)",
+      "Unidade": "Flores da Cunha",
       "Regional": "RSSC",
-      "Analista": "Flavio",
+      "Analista": "Flavio Brum",
       "Supervisor": "John",
       "Endereco": "Estrada das Indústrias, 2030 - Lagoa Bella, Flores de Cunha - Maps",
       "esteiras": [],
@@ -1022,22 +1097,10 @@
       "estoque": []
     },
     {
-      "Sigla": "BRA01",
-      "Unidade": "MELIAR Porto Alegre",
-      "Regional": "RSSC",
-      "Analista": "Flavio",
-      "Supervisor": "John",
-      "Endereco": "Av dos Estados, 30 PORTÃO 1",
-      "esteiras": [],
-      "paineis_unid": [],
-      "tecnicos": [],
-      "estoque": []
-    },
-    {
       "Sigla": "SRS9",
       "Unidade": "Rita",
       "Regional": "RSSC",
-      "Analista": "Fabio",
+      "Analista": "Fabio Linhares",
       "Supervisor": "John",
       "Endereco": "Rua Amilton da Silva Amorim 86 Nova Santa Rita / RS",
       "esteiras": [
@@ -1093,7 +1156,7 @@
       "Sigla": "SSC4",
       "Unidade": "Chapecó",
       "Regional": "RSSC",
-      "Analista": "Daniel",
+      "Analista": "Daniel Specht",
       "Supervisor": "Felipe",
       "Endereco": "Logradouro: Rodovia 283, SN, Galpao 01 Bairro: Rural - CEP: 89815-899 - Chapecó SC Maps",
       "esteiras": [
@@ -1135,7 +1198,7 @@
       "Sigla": "SSC7",
       "Unidade": "Lages",
       "Regional": "RSSC",
-      "Analista": "Flavio",
+      "Analista": "Flavio Brum",
       "Supervisor": "Felipe",
       "Endereco": "R. Bruno Luersen, 873 - Jardim Panorâmico – Lages/ SC, CEP: 88524-005 - Maps",
       "esteiras": [],
@@ -1180,7 +1243,7 @@
     },
     {
       "Sigla": "SSC2",
-      "Unidade": "São josé (Florianopolis)",
+      "Unidade": "Biguaçu",
       "Regional": "PRSC",
       "Analista": "Washington",
       "Supervisor": "Felipe",
@@ -1214,7 +1277,7 @@
     },
     {
       "Sigla": "SSC3",
-      "Unidade": "Gaspar (Blumenau)",
+      "Unidade": "Blumenau",
       "Regional": "PRSC",
       "Analista": "Washington",
       "Supervisor": "Felipe",
@@ -1241,7 +1304,7 @@
     },
     {
       "Sigla": "SSC5",
-      "Unidade": "Morro da Fumaça (Criciúma)",
+      "Unidade": "Criciúma",
       "Regional": "PRSC",
       "Analista": "Washington",
       "Supervisor": "Felipe",
@@ -1275,7 +1338,7 @@
       "Sigla": "SPR4",
       "Unidade": "Pato Branco",
       "Regional": "PRSC",
-      "Analista": "Daniel",
+      "Analista": "Daniel Specht",
       "Supervisor": "Jonas",
       "Endereco": "BR-158 - Vila Esperança, São Bráz - Pato Branco/PR\nCondomínio Carba Logística Galpão 1, CEP: 85503-301 - Maps",
       "esteiras": [],
@@ -1302,7 +1365,7 @@
       "Sigla": "SPR5",
       "Unidade": "Guarapuava",
       "Regional": "PRSC",
-      "Analista": "Mayara",
+      "Analista": "Mayara Mota",
       "Supervisor": "Jonas",
       "Endereco": "BR-277, KM348 - Jardim das Americas, Guarapuava/PR, CEP: 85030-230 - Maps",
       "esteiras": [],
@@ -1322,7 +1385,7 @@
       "Sigla": "SPR3",
       "Unidade": "Cascavel",
       "Regional": "PRSC",
-      "Analista": "Daniel",
+      "Analista": "Daniel Specht",
       "Supervisor": "Jonas",
       "Endereco": "Rodovia Federal BR 277, KM 584, Lote 391-C-13A, Cascavel/PR - Maps",
       "esteiras": [],

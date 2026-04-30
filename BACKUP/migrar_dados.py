@@ -65,8 +65,10 @@ def migrar_catalogos():
                 "modelo_id": modelo_id,
                 "item": str(p["Item"]),
                 "codigo_item": str(p["Código do Item"]),
-                "referencia": str(p["Referência"]),
-                "tamanho": str(p["Tamanho"]),
+                "referencia": str(p["Referência"]) if "Referência" in p else "",
+                "tamanho": str(p["Tamanho"]) if "Tamanho" in p else "",
+                "medida": str(p["Medida"]) if "Medida" in p else "",
+                "tipo": str(p["Tipo"]) if "Tipo" in p else "Geral",
                 "is_critico": str(p["Crítico"]).upper() in ["SIM", "S", "TRUE"]
             }
             supabase.table("pecas_modelo").upsert(peca_data).execute()
@@ -86,7 +88,9 @@ def migrar_ativos():
                 "sigla_unidade": str(row["SIGLA"]).strip().upper(),
                 "tag": str(row["TAG"]),
                 "modelo_id": modelos_map[m_chave],
-                "qtd_modulos": int(row["Qtd_Modulos"])
+                "qtd_modulos": int(row["Qtd_Modulos"]),
+                "comprimento_modulo": float(row["Comprimento"]) if "Comprimento" in row and not pd.isna(row["Comprimento"]) else 0,
+                "info_adicional": str(row["Informacao_Adicional"]) if "Informacao_Adicional" in row and not pd.isna(row["Informacao_Adicional"]) else ""
             }
             supabase.table("ativos_unidade").upsert(data).execute()
 

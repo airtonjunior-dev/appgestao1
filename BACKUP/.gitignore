@@ -12,9 +12,3 @@ ENV/
 
 # Data
 # dados.json # Talvez queira manter na migração
-
-# Ignore backups and old legacy versions
-BACKUP/
-legacy/
-*.xlsx
-*.xlsb

@@ -2,6 +2,15 @@ import pandas as pd
 import json
 import os
 from datetime import datetime
+import sys
+
+# Força a saída para UTF-8 para evitar erros de encodamento no console do Windows
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass # Versões muito antigas de Python
+
 
 # ==========================================
 # CONFIGURAÇÃO DE MAPEAMENTO DO EXCEL
@@ -21,7 +30,7 @@ CONFIG = {
         },
         "dicionario_tecnico": {
             "nome": "Dicionario_Tecnico",
-            "colunas": ["SIGLA", "Modelo_Chave", "Item", "Codigo", "Referencia"]
+            "colunas": ["SIGLA", "Modelo_Chave", "Marca", "Item", "Código do Item", "Referência", "Tamanho", "Crítico"]
         },
         "estoque_critico": {
             "nome": "Estoque_Critico",
@@ -37,7 +46,7 @@ CONFIG = {
         },
         "gaiolas": {
             "nome": "Controle_Gaiolas",
-            "colunas": ["SIGLA", "Carimbo de data/hora", "Quantas Gaiolas temos pendente na unidade hoje ? (Número)"]
+            "colunas": ["SIGLA", "Carimbo de data/hora", "Qual seu nome", "Quantas Gaiolas temos pendente na unidade hoje ? (Número)"]
         },
         "links": {
             "nome": "Links",
@@ -93,12 +102,26 @@ class GeradorDados:
         return df.fillna('S/I')
 
     def processar_bibliotecas(self):
-        """Gera os dicionários de modelos filtrados por Unidade."""
-        print("🔧 Processando bibliotecas técnicas...")
+        """Gera os dicionários globais de modelos."""
+        print("🔧 Processando bibliotecas técnicas globais...")
         
         # Links Úteis e Gaiolas (Geral)
         self.output_data["links"] = self.data_frames["links"].to_dict(orient='records')
         self.output_data["gaiolas_global"] = self.data_frames["gaiolas"].to_dict(orient='records')
+
+        # Inicializa bibliotecas se ainda não houver
+        self.output_data["bib_est"] = {}
+        self.output_data["bib_pai"] = {}
+
+        # 1. Carrega todas as peças que possuem SIGLA "GLOBAL" (Essas valem para todos)
+        df_dic_est = self.data_frames["dicionario_tecnico"]
+        for m in df_dic_est[df_dic_est['SIGLA'].astype(str).str.upper() == 'GLOBAL']['Modelo_Chave'].unique():
+            self.output_data["bib_est"][str(m)] = df_dic_est[(df_dic_est['Modelo_Chave'] == m) & (df_dic_est['SIGLA'].astype(str).str.upper() == 'GLOBAL')].to_dict(orient='records')
+
+        df_dic_pai = self.data_frames["dicionario_paineis"]
+        for m in df_dic_pai[df_dic_pai['SIGLA'].astype(str).str.upper() == 'GLOBAL']['Modelo_Painel'].unique():
+            self.output_data["bib_pai"][str(m)] = df_dic_pai[(df_dic_pai['Modelo_Painel'] == m) & (df_dic_pai['SIGLA'].astype(str).str.upper() == 'GLOBAL')].to_dict(orient='records')
+
 
     def processar_unidades(self):
         """Vincula todos os dados à Chave Mestra 'SIGLA'."""
@@ -112,25 +135,31 @@ class GeradorDados:
         df_dic_pai = self.data_frames["dicionario_paineis"]
         df_tec = self.data_frames.get("tecnicos", pd.DataFrame(columns=self.config["abas"]["tecnicos"]["colunas"]))
 
-        # Inicializa bibliotecas se ainda não houver
-        self.output_data["bib_est"] = {}
-        self.output_data["bib_pai"] = {}
-
+        # Mantenha os dados já carregados em processar_bibliotecas
         unidades_lista = []
         for _, u in df_uni.iterrows():
             sigla = str(u['SIGLA']).strip().upper()
             
-            # Processa Bibliotecas Específicas desta Unidade
-            # Isso garante que se o dicionário tiver a SIGLA, ele pegue as peças daquela unidade
-            self.output_data["bib_est"].update({
-                str(m): df_dic_est[(df_dic_est['Modelo_Chave'] == m) & (df_dic_est['SIGLA'] == sigla)].to_dict(orient='records')
-                for m in df_est[df_est['SIGLA'] == sigla]['Modelo_Chave'].unique()
-            })
+            # 2. Se a unidade tiver peças exclusivas para um modelo (Além do Global ou no lugar dele),
+            # nós complementamos aqui. Isso permite que a unidade tenha "peças especiais".
+            for m in df_est[df_est['SIGLA'] == sigla]['Modelo_Chave'].unique():
+                pecas_unid = df_dic_est[(df_dic_est['Modelo_Chave'] == m) & (df_dic_est['SIGLA'] == sigla)].to_dict(orient='records')
+                if pecas_unid:
+                    # Se já existe o modelo no global, adicionamos as peças locais
+                    if str(m) in self.output_data["bib_est"]:
+                        # Evita duplicatas se o usuário repetiu (opcional, mas seguro)
+                        self.output_data["bib_est"][str(m)].extend(pecas_unid)
+                    else:
+                        self.output_data["bib_est"][str(m)] = pecas_unid
 
-            self.output_data["bib_pai"].update({
-                str(m): df_dic_pai[(df_dic_pai['Modelo_Painel'] == m) & (df_dic_pai['SIGLA'] == sigla)].to_dict(orient='records')
-                for m in df_pai[df_pai['SIGLA'] == sigla]['Modelo_Painel'].unique()
-            })
+            for m in df_pai[df_pai['SIGLA'] == sigla]['Modelo_Painel'].unique():
+                pecas_unid_pai = df_dic_pai[(df_dic_pai['Modelo_Painel'] == m) & (df_dic_pai['SIGLA'] == sigla)].to_dict(orient='records')
+                if pecas_unid_pai:
+                    if str(m) in self.output_data["bib_pai"]:
+                        self.output_data["bib_pai"][str(m)].extend(pecas_unid_pai)
+                    else:
+                        self.output_data["bib_pai"][str(m)] = pecas_unid_pai
+
 
             unidade_dict = {
                 "Sigla": sigla,
@@ -168,7 +197,7 @@ class GeradorDados:
             if chave == "unidades" or "SIGLA" not in df.columns:
                 continue
             
-            siglas_aba = set(df["SIGLA"].str.strip().str.upper())
+            siglas_aba = {s for s in df["SIGLA"].str.strip().str.upper() if s != 'GLOBAL'}
             diferenca = siglas_aba - siglas_mestre
             if diferenca:
                 print(f"❌ ERRO NA ABA '{self.config['abas'][chave]['nome']}': As siglas {diferenca} não existem na aba Unidades!")
